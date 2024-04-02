@@ -34,3 +34,43 @@ git push -u origin main
 
 
 # oxfam2024
+
+
+historique
+
+git init
+
+git branch -M main
+
+git remote add origin git@github.com:ymairesse/jette.git
+
+git add -A *
+
+git commit -m "Premier commit significatif"
+
+git push
+
+git push -u origin main
+
+vim README.md
+
+git commit -m "Avec Manuel Github"
+
+git status
+
+git push
+
+git add README.md
+
+git commit -m "Avec Manuel Github"
+
+git push
+
+nano README.md
+
+git add README.md
+
+git commit -m "Avec Manuel Github"
+
+git push
+

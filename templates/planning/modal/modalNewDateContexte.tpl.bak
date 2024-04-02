@@ -1,0 +1,71 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalNewDate4Contexte"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="modalNewDate4ContexteLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalNewDate4ContexteLabel">
+          Nouvelle date
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditDateContexte">
+          <input
+            type="hidden"
+            name="idContexte"
+            id="idContexte"
+            value="{$idContexte}"
+          />
+          <input
+            type="hidden"
+            name="datePrecedente"
+            id="datePrecedente"
+            value="{$datePrecedente}"
+          />
+          <input
+            type="hidden"
+            name="dateSuivante"
+            id="dateSuivante"
+            value="{$dateSuivante}"
+          />
+
+          <div class="input-group">
+            <label for="dateContexte">Nouvelle date</label>
+            <input
+              type="date"
+              name="dateContexte"
+              id="dateContexte"
+              class="form-control"
+              value="{$dateActuelle}"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuler
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="btn-modalSaveDateContexte"
+        >
+          Enregistrer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

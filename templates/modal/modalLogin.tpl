@@ -33,7 +33,7 @@
                 class="btn btn-outline-secondary"
                 type="button"
                 id="btn-view"
-                tabindex="4"
+                tabindex="-1"
               >
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
@@ -54,17 +54,10 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btn-lostMDP" class="btn btn-warning btn-sm">
+        <button type="button" id="btn-lostMDP" class="btn btn-warning btn-sm me-auto">
           J'ai perdu mon mot de passe
         </button>
-        <button
-          type="button"
-          class="btn btn-secondary ms-auto"
-          data-bs-dismiss="modal"
-        >
-          Fermer
-        </button>
-
+        
         <button type="button" class="btn btn-success" id="btn-modalLogin" tabindex="3">
           Connexion
         </button>

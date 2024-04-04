@@ -224,10 +224,6 @@ $(function () {
                   formulaire: formulaire,
                 },
                 function (message2) {
-                  bootbox.alert({
-                    title: title,
-                    message: message2,
-                  });
                   $("#gestCalendrier").trigger("click");
                 }
               );

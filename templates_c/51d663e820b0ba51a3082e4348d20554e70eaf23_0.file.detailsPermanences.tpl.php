@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-03-29 17:19:03
+/* Smarty version 4.3.1, created on 2024-04-04 08:50:03
   from '/home/yves/www/newOxfam/templates/planning/inc/detailsPermanences.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6606e9f71fd584_26175226',
+  'unifunc' => 'content_660e4d9b13ef13_03710431',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6606e9f71fd584_26175226 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660e4d9b13ef13_03710431 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h3>Date pivot: <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['date']->value,"%d/%m/%Y");?>

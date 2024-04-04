@@ -758,7 +758,7 @@ class Planning
      * 
      * @param int $month : numéro du mois
      * @param int $year : millésime
-     * @param string $pseudo : limitation  éventuelle à l'utilisateur $acronyme
+     * @param string $pseudo : limitation  éventuelle à l'utilisateur $pseudo
      * 
      * @return array
      */

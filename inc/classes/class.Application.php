@@ -269,7 +269,7 @@ class Application
     }
 
     /**
-     * calcule l'acronyme sur base du nom et du prénom
+     * calcule le pseudo sur base du nom et du prénom
      * 
      * @param string $nom
      * @param string $prenom
@@ -281,10 +281,10 @@ class Application
         $nom = $this->accentsOut(mb_strtolower(str_replace(' ', '', $nom), 'UTF-8'));
         $prenom = $this->accentsOut(mb_strtolower(str_replace(' ', '', $prenom), 'UTF-8'));
 
-        $acronyme = mb_substr($nom, 0, 3) . mb_substr($prenom, 0, 3);
-        $acronyme = $acronyme . mb_substr('123456', 0, 6 - mb_strlen($acronyme));
+        $pseudo = mb_substr($nom, 0, 3) . mb_substr($prenom, 0, 3);
+        $pseudo = $pseudo . mb_substr('123456', 0, 6 - mb_strlen($pseudo));
 
-        return $acronyme;
+        return $pseudo;
     }
 
     /**

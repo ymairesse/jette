@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-02 16:40:49
+/* Smarty version 4.3.1, created on 2024-04-03 08:19:36
   from '/home/yves/www/newOxfam/templates/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660c18f12fa9e8_91233877',
+  'unifunc' => 'content_660cf4f8d83790_77999267',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660c18f12fa9e8_91233877 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660cf4f8d83790_77999267 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"

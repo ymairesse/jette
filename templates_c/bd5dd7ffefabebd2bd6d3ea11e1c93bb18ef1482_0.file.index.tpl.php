@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-01 09:51:04
+/* Smarty version 4.3.1, created on 2024-04-03 08:19:36
   from '/home/yves/www/newOxfam/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660a67682edc58_23362636',
+  'unifunc' => 'content_660cf4f8d71a22_89262289',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_660a67682edc58_23362636 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660cf4f8d71a22_89262289 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>

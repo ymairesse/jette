@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-03-26 16:41:21
+/* Smarty version 4.3.1, created on 2024-04-04 08:49:36
   from '/home/yves/www/newOxfam/templates/gestion/inc/boutonInscription.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6602eca1650c86_77738328',
+  'unifunc' => 'content_660e4d80319f64_85908131',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6602eca1650c86_77738328 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660e4d80319f64_85908131 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 ?>
 <button

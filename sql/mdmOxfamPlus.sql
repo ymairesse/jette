@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `oxmdm1_authToken` (
-  `acronyme` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Acronyme de l''utilisateur',
+  `pseudo` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'pseudo de l''utilisateur',
   `token` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Token d''authentification',
   `startTime` datetime NOT NULL COMMENT 'Date et heure de début de session'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table des utilisateurs authentifiés en session';
@@ -37,8 +37,8 @@ CREATE TABLE `oxmdm1_authToken` (
 -- Déchargement des données de la table `oxmdm1_authToken`
 --
 
-INSERT INTO `oxmdm1_authToken` (`acronyme`, `token`, `startTime`) VALUES
-('maiyve', 'b551f05126d6f1206b34cc5b', '2024-02-20 17:34:00');
+INSERT INTO `oxmdm1_authToken` (`pseudo`, `token`, `startTime`) VALUES
+('xxxxxx', 'b551f05126d6f1206b34cc5b', '2024-02-20 17:34:00');
 
 -- --------------------------------------------------------
 
@@ -296,7 +296,7 @@ INSERT INTO `oxmdm1_users` (`pseudo`, `civilite`, `nom`, `prenom`, `droits`, `ma
 -- Index pour la table `oxmdm1_authToken`
 --
 ALTER TABLE `oxmdm1_authToken`
-  ADD PRIMARY KEY (`acronyme`);
+  ADD PRIMARY KEY (`pseudo`);
 
 --
 -- Index pour la table `oxmdm1_calendar`
@@ -346,7 +346,7 @@ ALTER TABLE `oxmdm1_heuresPermanences`
 --
 ALTER TABLE `oxmdm1_lostPasswd`
   ADD PRIMARY KEY (`pseudo`,`date`),
-  ADD KEY `acronyme` (`pseudo`);
+  ADD KEY `pseudo` (`pseudo`);
 
 --
 -- Index pour la table `oxmdm1_users`

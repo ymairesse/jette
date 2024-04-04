@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-02 17:39:10
+/* Smarty version 4.3.1, created on 2024-04-04 08:50:03
   from '/home/yves/www/newOxfam/templates/planning/gestPeriodes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660c269e575c49_29036610',
+  'unifunc' => 'content_660e4d9b132259_77241385',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:planning/inc/detailsPermanences.tpl' => 1,
   ),
 ),false)) {
-function content_660c269e575c49_29036610 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660e4d9b132259_77241385 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2>Gestion des périodes de permanences</h2>
 <div class="row">
 <div class="col-3" id="listeEpoques">

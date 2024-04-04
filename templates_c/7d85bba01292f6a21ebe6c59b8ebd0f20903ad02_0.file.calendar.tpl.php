@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-02 15:46:56
+/* Smarty version 4.3.1, created on 2024-04-04 08:33:31
   from '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660c0c50589108_54511145',
+  'unifunc' => 'content_660e49bb58af33_31824660',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d85bba01292f6a21ebe6c59b8ebd0f20903ad02' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl',
-      1 => 1712065604,
+      1 => 1712069274,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660c0c50589108_54511145 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660e49bb58af33_31824660 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h1>Calendrier des permanences</h1>
@@ -203,7 +203,7 @@ _<?php echo $_smarty_tpl->tpl_vars['noPeriode']->value;?>
           <!-- Bouton de désinscription -->
           <button
             type="button"
-            class="btn btn-sm btn-inscription pull-right btn-danger <?php if ($_smarty_tpl->tpl_vars['freezeStatus']->value >= 1) {?>d-none<?php }?>"
+            class="btn btn-sm btn-inscription pull-right btn-danger <?php if (($_smarty_tpl->tpl_vars['freezeStatus']->value >= 1)) {?>d-none<?php }?>"
             title="Inscription"
             data-date="<?php echo $_smarty_tpl->tpl_vars['dataJournee']->value['date'];?>
 "

@@ -11,9 +11,9 @@ require_once INSTALL_DIR.'/inc/classes/class.User.php';
 
 $nom = isset($_POST['nom']) ? $_POST['nom'] : Null;
 $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : Null;
-$acronyme = $Application->acronyme4nomPrenom($nom, $prenom);
+$pseudo = $Application->pseudo4nomPrenom($nom, $prenom);
 
 $User = new User();
-$test = $User->userExists($acronyme, Null);
+$test = $User->userExists($pseudo, Null);
 
 echo ($test == true) ? 1 : 0;

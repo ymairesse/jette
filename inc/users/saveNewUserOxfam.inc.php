@@ -7,6 +7,8 @@ require_once '../../config.inc.php';
 // ressources principales toujours nécessaires: classes Application, User, Smarty, 
 include '../entetes.inc.php';
 
+require_once INSTALL_DIR.'/inc/classes/phpMailer/class.phpmailer.php';
+
 $formulaire = isset($_POST['formulaire']) ? $_POST['formulaire'] : Null;
 
 $form = array();
@@ -20,7 +22,7 @@ $nb = User::saveNewUser($form);
 if ($nb == 1) {
 
     // Créer une nouvelle instance de PHPMailer
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail = new PHPMailer();
 
     $mail->IsHTML(true);
     $mail->CharSet = 'UTF-8';

@@ -24,7 +24,7 @@ $(function () {
           formulaire: formulaire,
         },
         function (resultat) {
-          $("#modalEditUser").modal("hide");
+          // $("#modalEditUser").modal("hide");
           bootbox.alert({
             title: "Enregistrement",
             message:

@@ -2,7 +2,6 @@
     "require": {
         "smarty/smarty": "^4.3",
         "components/jquery": "^3.6",
-        "spipu/html2pdf": "^5.2",
-        "phpmailer/phpmailer": "^6.9"
+        "spipu/html2pdf": "^5.2"
     }
 }

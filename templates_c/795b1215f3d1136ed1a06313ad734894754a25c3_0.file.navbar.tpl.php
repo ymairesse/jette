@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-03 08:19:36
+/* Smarty version 4.3.1, created on 2024-04-05 14:16:31
   from '/home/yves/www/newOxfam/templates/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660cf4f8d83790_77999267',
+  'unifunc' => 'content_660feb9fa8f720_32041918',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '795b1215f3d1136ed1a06313ad734894754a25c3' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/navbar.tpl',
-      1 => 1712068846,
+      1 => 1712319373,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660cf4f8d83790_77999267 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660feb9fa8f720_32041918 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"
@@ -90,6 +90,12 @@ function content_660cf4f8d83790_77999267 (Smarty_Internal_Template $_smarty_tpl)
               <a href="#" class="dropdown-item" id="gestConges">
                 <i class="fa fa-key" aria-hidden="true"></i>
                 Gestion des congés
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a href="#" class="dropdown-item" id="btn-clean">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Nettoyage des mois échus
               </a>
             </li>
           </ul>

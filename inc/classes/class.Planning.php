@@ -793,7 +793,7 @@ class Planning
     }
 
     /**
-     * Enregistre une inscription à la $permanence YYYY-mm-dd_P pour 
+     * Enregistre une inscription à la permanence YYYY-mm-dd_P pour 
      * le bénévole $pseudo
      * 
      * @param int $idContexte
@@ -1054,6 +1054,64 @@ class Planning
         return $status;
     }
 
+    /**
+     * renvoie les mois figurant dans le calendrier planning
+     * 
+     * @param
+     * 
+     * @return array
+     */
+    public function getCalendarMonths() {
+        $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
+        $sql = 'SELECT DISTINCT SUBSTRING(date, 1, 7) AS mois ';
+        $sql .= 'FROM '.PFX.'calendar ';
+        $sql .= 'ORDER BY mois ';
+        $requete = $connexion->prepare($sql);
+
+        $resultat = $requete->execute();
+
+        $requete->setFetchMode(PDO::FETCH_ASSOC);
+        $listeMois = array();
+        while ($ligne = $requete->fetch()){
+            // $mois sous la forme YYYY-mm
+            $mois = $ligne['mois'];
+            $laDate = explode('-', $mois);
+            $year = $laDate[0];
+            $month = $laDate[1];
+            $monthName = $this->monthName($month);
+            $listeMois[$mois] = array('year' => $year, 'month' => $month, 'monthName' => $monthName);
+        }
+
+        Application::DeconnexionPDO($connexion);
+
+        return $listeMois;
+    }
+
+        /**
+     * Effacement de tout le calendrier d'un $month et d'une $year donnés
+     * 
+     * @param int $month
+     * @param int $year
+     * 
+     * @return int
+     */
+    public function deleteCalendar($year, $month) {
+        $periode = sprintf('%d-%02d-', $year, $month).'%';
+        $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
+        $sql = 'DELETE FROM '.PFX.'calendar ';
+        $sql .= 'WHERE date LIKE :periode ';
+        $requete = $connexion->prepare($sql);
+
+        $requete->bindParam(':periode', $periode, PDO::PARAM_STR, 9);
+
+        $resultat = $requete->execute();
+
+        $nb = $requete->rowCount();
+        
+        Application::DeconnexionPDO($connexion);
+
+        return $nb;
+    }
 
 
 }

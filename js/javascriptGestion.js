@@ -183,7 +183,7 @@ $(function () {
     var month = $("input#month").val();
     var year = $("input#year").val();
     var formulaire = $("#formGrid").serialize();
-    var title = "Enregistrement des permanences";
+    var title = "Enregistrement";
     // pseudo de l'utilisateur sélectionné
     var pseudo = $("#listeUsers tr.choosen").data("pseudo");
 

@@ -69,6 +69,12 @@
                 Gestion des congés
               </a>
             </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a href="#" class="dropdown-item" id="btn-clean">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Nettoyage des mois échus
+              </a>
+            </li>
           </ul>
         </li>
         {/if}

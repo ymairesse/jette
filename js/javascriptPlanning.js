@@ -1,8 +1,7 @@
 $(function () {
   // ---------------------------------------------------
-  // périodes de permanences en fonction des ères
+  // périodes de permanences en fonction des contextes
   // ---------------------------------------------------
-
   $("body").on("click", "#gestPeriodes", function (event) {
     testSession(event);
     $.post(
@@ -15,7 +14,7 @@ $(function () {
   });
 
   // ---------------------------------------------------
-  // sélection d'une "époque" dans la colonne de gauche
+  // sélection d'un "contexte" dans la colonne de gauche
   // ---------------------------------------------------
   $("body").on("click", "table#listeContextes tr", function (event) {
     testSession(event);
@@ -82,7 +81,7 @@ $(function () {
   });
 
   // ----------------------------------------------------
-  // Ajout d'une époque
+  // Boîte modale pour l'ajout d'un nouveau contexte
   // ----------------------------------------------------
   $("body").on("click", "#btn-addContexte", function (event) {
     testSession(event);
@@ -97,7 +96,7 @@ $(function () {
   });
 
   // ---------------------------------------------------
-  // Enregistrement de la date initiale de la nouvelle époque
+  // Enregistrement de la date initiale d'un contexte'
   // ---------------------------------------------------
   $("body").on("click", "#btn-modalSaveNewContexte", function (event) {
     testSession(event);
@@ -113,9 +112,9 @@ $(function () {
           if (idContexte > 0) $("#modalNewContexte").modal("hide");
           bootbox.alert({
             title: "Enregistrement",
-            message: "Nouvelle époque créée",
+            message: "Nouveau contexte créée",
             callback: function () {
-              // sélection de la nouvelle "époque"
+              // sélection du nouveau "contexte"
               Cookies.set("idContexte", idContexte, { sameSite: "strict" });
               // rafraîchissement de l'écran
               $("#gestPeriodes").trigger("click");
@@ -199,9 +198,9 @@ $(function () {
     });
   });
 
-  // -------------------------------------------------
-  // Suppression d'une permanence
-  // -------------------------------------------------
+  // -----------------------------------------------------------
+  // Suppression d'une permanence dans un $contexte
+  // -----------------------------------------------------------
   $("body").on("click", ".btn-delPermanence", function () {
     var ceci = $(this);
     var idContexte = $("table#listeContextes tr.choosen").data("idcontexte");
@@ -241,6 +240,9 @@ $(function () {
     });
   });
 
+  // -----------------------------------------------------------
+  // averissement sollennel avant la suppression d'un contexte
+  // -----------------------------------------------------------
   function messageContexte(trprev, trnext) {
     var message =
       "<div class='text-danger text-uppercase'><strong><i class='fa fa-exclamation-triangle fa-2x' aria-hidden='true'></i>";
@@ -256,6 +258,10 @@ $(function () {
     return message;
   }
 
+  // -----------------------------------------------------------
+  // suppression d'un contexte (et de toutes les informations )
+  // liées à ce "contexte"
+  // -----------------------------------------------------------
   $("body").on("click", ".btn-delContexte", function () {
     var tr = $(this).closest("tr");
     var idContexte = tr.data("idcontexte");
@@ -284,6 +290,11 @@ $(function () {
     });
   });
 
+  // -----------------------------------------------------------
+  // Modification de la date pivôt d'un contexte, dans l'intervalle
+  // entre les deux dates suivante et précédente
+  // -----------------------------------------------------------
+
   $("body").on("click", ".btn-editContexte", function () {
     var tr = $(this).closest("tr");
     var idContexte = tr.data("idcontexte");
@@ -305,7 +316,12 @@ $(function () {
     );
   });
 
-  $("body").on("click", "#modalSaveDateContexte", function () {
+  // -----------------------------------------------------------
+  // Enegistre une nouvelle date pivôt pour un nouveau contexte
+  // -----------------------------------------------------------
+
+  $("body").on("click", "#modalSaveDateContexte", function (event) {
+    testSession(event);
     if ($("#formEditDateContexte").valid()) {
       var formulaire = $("#formEditDateContexte").serialize();
       $.post(
@@ -319,5 +335,35 @@ $(function () {
         }
       );
     }
+  });
+
+  // -----------------------------------------------------------
+  // suppression des informations pour les mois échus
+  // -----------------------------------------------------------
+  $("body").on("click", "#btn-clean", function (event) {
+    testSession(event);
+    $.post("inc/gestion/getCleaning.inc.php", {}, function (resultat) {
+      $("#modal").html(resultat);
+      $("#modalCleaning").modal("show");
+    });
+  });
+
+  $("body").on("click", "#btn-modalClean", function (event) {
+    testSession(event);
+    var formulaire = $("#formClean").serialize();
+    $.post(
+      "inc/gestion/saveCleaning.inc.php",
+      {
+        formulaire: formulaire,
+      },
+      function (resultat) {
+        $("#modalCleaning").modal("hide");
+        $('#gestCalendrier').trigger('click');  
+        bootbox.alert({
+          title: "Suppression du calendrier planning",
+          message: "<strong>" + resultat + "</strong> permanences supprimées",
+        });
+      }
+    );
   });
 });

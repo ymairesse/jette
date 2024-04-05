@@ -201,7 +201,7 @@ $(function () {
     var month = $("input#month").val();
     var year = $("input#year").val();
     var formulaire = $("#formGrid").serialize();
-    var title = "Enregistrement des permanences";
+    var title = "Enregistrement";
 
     $.post(
       "inc/inscriptions/getModifications.inc.php",

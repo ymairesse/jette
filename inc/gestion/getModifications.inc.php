@@ -37,7 +37,7 @@ $nbAdded = count($added);
 $deleted = array_diff($oldInscriptions, $newInscriptions);
 $nbDeleted = count($deleted);
 
-$message = sprintf('Vous allez supprimer <strong>%d</strong> période(s) et ajouter <strong>%d</strong> période(s) de permanence', $nbDeleted, $nbAdded);
-$message .= '<br>VEUILLEZ CONFIRMER';
+$message = sprintf('<span class="text-center">Vous allez supprimer <strong>%d</strong> période(s) et ajouter <strong>%d</strong> période(s) de permanence', $nbDeleted, $nbAdded);
+$message .= '<br>VEUILLEZ CONFIRMER</span>';
 
 echo $message;

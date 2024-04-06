@@ -350,6 +350,7 @@ class Application
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
         $sql = 'SELECT * FROM ' . PFX . 'users ';
         $sql .= 'ORDER BY nom, prenom ';
+        $sql .= 'WHERE droits = "admin" ';
         $requete = $connexion->prepare($sql);
 
         $listeAdmins = array();

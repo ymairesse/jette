@@ -325,7 +325,8 @@ class Application
      * 
      * @return string
      */
-    public static function civilite($mfx){
+    public static function civilite($mfx)
+    {
         switch ($mfx) {
             case 'F':
                 return 'Mme';
@@ -333,7 +334,7 @@ class Application
             case 'M':
                 return 'M.';
                 break;
-            default: 
+            default:
                 return 'Mme/M.';
         }
     }
@@ -349,8 +350,8 @@ class Application
     {
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
         $sql = 'SELECT * FROM ' . PFX . 'users ';
-        $sql .= 'ORDER BY nom, prenom ';
         $sql .= 'WHERE droits = "admin" ';
+        $sql .= 'ORDER BY nom, prenom ';
         $requete = $connexion->prepare($sql);
 
         $listeAdmins = array();
@@ -450,27 +451,29 @@ class Application
         return !$mail->Send();
     }
 
-     /**
+    /**
      * renvoie le nom du mois en français depuis le numéro du mois
      * 
      * @param int $month
      * 
      * @return string
      */
-    public function monthName ($month){
+    public function monthName($month)
+    {
         $listeMois = [
-            1 => 'Janvier', 
-            2 => 'Février', 
-            3 => 'Mars', 
-            4 => 'Avril', 
-            5 => 'Mai', 
-            6 => 'Juin', 
-            7 => 'Juillet', 
-            8 => 'Août', 
-            9 => 'Septembre', 
-            10 => 'Octobre', 
-            11 => 'Novembre', 
-            12 => 'Décembre'];
+            1 => 'Janvier',
+            2 => 'Février',
+            3 => 'Mars',
+            4 => 'Avril',
+            5 => 'Mai',
+            6 => 'Juin',
+            7 => 'Juillet',
+            8 => 'Août',
+            9 => 'Septembre',
+            10 => 'Octobre',
+            11 => 'Novembre',
+            12 => 'Décembre'
+        ];
 
         return $listeMois[$month];
     }
@@ -482,7 +485,8 @@ class Application
      * 
      * @return array
      */
-    public function getDaysName (){
+    public function getDaysName()
+    {
         $daysOfWeek = array(
             1 => 'Lundi',
             2 => 'Mardi',

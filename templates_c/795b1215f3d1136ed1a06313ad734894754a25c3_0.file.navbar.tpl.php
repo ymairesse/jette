@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-05 14:16:31
+/* Smarty version 4.3.1, created on 2024-04-08 09:32:00
   from '/home/yves/www/newOxfam/templates/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660feb9fa8f720_32041918',
+  'unifunc' => 'content_66139d7056e455_45995266',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '795b1215f3d1136ed1a06313ad734894754a25c3' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/navbar.tpl',
-      1 => 1712319373,
+      1 => 1712561508,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660feb9fa8f720_32041918 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66139d7056e455_45995266 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"
@@ -43,7 +43,9 @@ function content_660feb9fa8f720_32041918 (Smarty_Internal_Template $_smarty_tpl)
         <?php if ((isset($_smarty_tpl->tpl_vars['user']->value))) {?>
 
         <li class="nav-item">
-          <a class="nav-link" id="gestCalendrier" href="#"><i class="fa fa-calendar"></i> Calendrier des permanences</a>
+          <a class="nav-link" id="gestCalendrier" href="#"
+            ><i class="fa fa-calendar"></i> Calendrier des permanences</a
+          >
         </li>
 
         <?php if (($_smarty_tpl->tpl_vars['user']->value['droits'] == 'admin')) {?>
@@ -69,17 +71,19 @@ function content_660feb9fa8f720_32041918 (Smarty_Internal_Template $_smarty_tpl)
               </a>
             </li>
           </ul>
-          </li>
+        </li>
 
-          <li class="nav-item dropdown">
-            <a href="#" 
-              class="nav-link dropdown-toggle"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Initialisations
-            </a>
-            <ul class="dropdown-menu">
+          </a>
+          <ul class="dropdown-menu">
             <li>
               <a href="#" class="dropdown-item" id="gestPeriodes">
                 <i class="fa fa-hourglass" aria-hidden="true"></i> Gestion des
@@ -92,10 +96,11 @@ function content_660feb9fa8f720_32041918 (Smarty_Internal_Template $_smarty_tpl)
                 Gestion des congés
               </a>
             </li>
-            <li><hr class="dropdown-divider"></li>
+            <li><hr class="dropdown-divider" /></li>
             <li>
               <a href="#" class="dropdown-item" id="btn-clean">
-                <i class="fa fa-trash-o" aria-hidden="true"></i> Nettoyage des mois échus
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Nettoyage des
+                mois échus
               </a>
             </li>
           </ul>
@@ -127,12 +132,21 @@ function content_660feb9fa8f720_32041918 (Smarty_Internal_Template $_smarty_tpl)
             </li>
 
             <?php }?>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a href="#" class="dropdown-item"> VERSION: <?php echo $_smarty_tpl->tpl_vars['VERSION']->value;?>
+ </a>
+            </li>
           </ul>
         </li>
 
         <?php }?>
         <li>
-          <i id="ajaxLoader" style="display: none" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+          <i
+            id="ajaxLoader"
+            style="display: none"
+            class="fa fa-spinner fa-spin fa-3x fa-fw"
+          ></i>
         </li>
       </ul>
 

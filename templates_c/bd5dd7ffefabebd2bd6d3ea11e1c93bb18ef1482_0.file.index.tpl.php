@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-03 08:19:36
+/* Smarty version 4.3.1, created on 2024-04-08 09:32:00
   from '/home/yves/www/newOxfam/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660cf4f8d71a22_89262289',
+  'unifunc' => 'content_66139d7055c483_73340621',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd5dd7ffefabebd2bd6d3ea11e1c93bb18ef1482' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/index.tpl',
-      1 => 1711957856,
+      1 => 1712561497,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_660cf4f8d71a22_89262289 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66139d7055c483_73340621 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -90,7 +90,7 @@ function content_660cf4f8d71a22_89262289 (Smarty_Internal_Template $_smarty_tpl)
       <div class="row"><?php $_smarty_tpl->_subTemplateRender("file:navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?></div>
     </div>
-
+    
     <div class="container-fluid" id="corpsPage"><?php $_smarty_tpl->_subTemplateRender("file:start.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?></div>
 

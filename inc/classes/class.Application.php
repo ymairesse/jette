@@ -278,8 +278,8 @@ class Application
      */
     public function pseudo4nomPrenom($nom, $prenom)
     {
-        $nom = $this->accentsOut(mb_strtolower(str_replace(' ', '', $nom), 'UTF-8'));
-        $prenom = $this->accentsOut(mb_strtolower(str_replace(' ', '', $prenom), 'UTF-8'));
+        $nom = mb_strtolower(preg_replace("/[^a-zA-Z]/", "", $this->accentsOut($nom)), 'UTF-8');
+        $prenom = mb_strtolower(preg_replace("/[^a-zA-Z]/", "", $this->accentsOut($prenom)), 'UTF-8');
 
         $pseudo = mb_substr($nom, 0, 3) . mb_substr($prenom, 0, 3);
         $pseudo = $pseudo . mb_substr('123456', 0, 6 - mb_strlen($pseudo));

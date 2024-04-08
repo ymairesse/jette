@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-03 08:19:36
+/* Smarty version 4.3.1, created on 2024-04-08 09:01:18
   from '/home/yves/www/newOxfam/templates/start.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660cf4f8d86917_81412515',
+  'unifunc' => 'content_6613963eb2e215_35022040',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a3d039fcb98bef1c2c1429cefb12c62796829af2' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/start.tpl',
-      1 => 1709038969,
+      1 => 1712559658,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660cf4f8d86917_81412515 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6613963eb2e215_35022040 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
   <div class="col-md-6 col-12">
 
@@ -32,6 +32,7 @@ function content_660cf4f8d86917_81412515 (Smarty_Internal_Template $_smarty_tpl)
 
   <div class="col-md-6 col-12">
 
+    <h4 class="text-danger">Cette application est certainement encore entachée de quelques bugs. Merci de me les signaler.</h4>
 
         <h2>Nous Visiter</h2>
         <p>

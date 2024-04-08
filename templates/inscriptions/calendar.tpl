@@ -84,7 +84,7 @@
       {assign var=idContexte value=$dataJournee.idContexte}
       <td class="jourDate px-0 py-0" style="width: 10%">
         <p>
-          {$dataJournee.nomDuJour|upper|substr:0:2}<br />{$dataJournee.date|date_format:"%d"}/{$dataJournee.date|date_format:"%m"}<br />
+          {$dataJournee.nomDuJour|upper|substr:0:2}<br />{$dataJournee.date|date_format:"%d"}/{$dataJournee.date|date_format:"%m"}
         </p>
         <button
           type="button"

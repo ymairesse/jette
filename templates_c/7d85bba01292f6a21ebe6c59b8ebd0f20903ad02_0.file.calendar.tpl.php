@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-04 08:33:31
+/* Smarty version 4.3.1, created on 2024-04-08 09:59:11
   from '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660e49bb58af33_31824660',
+  'unifunc' => 'content_6613a3cf0b98e8_24186876',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d85bba01292f6a21ebe6c59b8ebd0f20903ad02' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl',
-      1 => 1712069274,
+      1 => 1712563146,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660e49bb58af33_31824660 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6613a3cf0b98e8_24186876 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h1>Calendrier des permanences</h1>
@@ -135,7 +135,7 @@ $_smarty_tpl->tpl_vars['dataJournee']->do_else = false;
           <?php echo substr(mb_strtoupper((string) $_smarty_tpl->tpl_vars['dataJournee']->value['nomDuJour'] ?? '', 'UTF-8'),0,2);?>
 <br /><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['dataJournee']->value['date'],"%d");?>
 /<?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['dataJournee']->value['date'],"%m");?>
-<br />
+
         </p>
         <button
           type="button"

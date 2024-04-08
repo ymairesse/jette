@@ -20,10 +20,12 @@
         {if isset($user)}
 
         <li class="nav-item">
-          <a class="nav-link" id="gestCalendrier" href="#"><i class="fa fa-calendar"></i> Calendrier des permanences</a>
+          <a class="nav-link" id="gestCalendrier" href="#"
+            ><i class="fa fa-calendar"></i> Calendrier des permanences</a
+          >
         </li>
 
-        {if  ($user.droits == 'admin')}
+        {if ($user.droits == 'admin')}
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -46,17 +48,19 @@
               </a>
             </li>
           </ul>
-          </li>
+        </li>
 
-          <li class="nav-item dropdown">
-            <a href="#" 
-              class="nav-link dropdown-toggle"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Initialisations
-            </a>
-            <ul class="dropdown-menu">
+          </a>
+          <ul class="dropdown-menu">
             <li>
               <a href="#" class="dropdown-item" id="gestPeriodes">
                 <i class="fa fa-hourglass" aria-hidden="true"></i> Gestion des
@@ -69,10 +73,11 @@
                 Gestion des congés
               </a>
             </li>
-            <li><hr class="dropdown-divider"></li>
+            <li><hr class="dropdown-divider" /></li>
             <li>
               <a href="#" class="dropdown-item" id="btn-clean">
-                <i class="fa fa-trash-o" aria-hidden="true"></i> Nettoyage des mois échus
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Nettoyage des
+                mois échus
               </a>
             </li>
           </ul>
@@ -104,12 +109,20 @@
             </li>
 
             {/if}
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a href="#" class="dropdown-item"> VERSION: {$VERSION} </a>
+            </li>
           </ul>
         </li>
 
         {/if}
         <li>
-          <i id="ajaxLoader" style="display: none" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+          <i
+            id="ajaxLoader"
+            style="display: none"
+            class="fa fa-spinner fa-spin fa-3x fa-fw"
+          ></i>
         </li>
       </ul>
 

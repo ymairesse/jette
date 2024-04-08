@@ -34,4 +34,6 @@ if ($action == 'renewPasswd') {
     $smarty->assign('user', $user);
 }
 
+$smarty->assign('VERSION', VERSION);
+
 $smarty->display('index.tpl');

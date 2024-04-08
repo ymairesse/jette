@@ -9,6 +9,7 @@
 
   <div class="col-md-6 col-12">
 
+    <h4 class="text-danger">Cette application est certainement encore entachée de quelques bugs. Merci de me les signaler.</h4>
 
         <h2>Nous Visiter</h2>
         <p>

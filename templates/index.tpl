@@ -36,7 +36,7 @@
     <div class="container-fluid" id="menu">
       <div class="row">{include file="navbar.tpl"}</div>
     </div>
-
+    
     <div class="container-fluid" id="corpsPage">{include file="start.tpl"}</div>
 
     {if $action == 'renewPasswd'} {include

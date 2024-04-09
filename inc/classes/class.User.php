@@ -132,7 +132,7 @@ class User
     {
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
         $sql = 'SELECT civilite, pseudo, nom, prenom, droits, mail, adresse, cpost, commune, ';
-        $sql .= 'telephone, homonyme, approuve ';
+        $sql .= 'telephone, homonyme, approuve, experience ';
         $sql .= 'FROM ' . PFX . 'users ';
         $sql .= 'WHERE pseudo = :pseudo ';
         $requete = $connexion->prepare($sql);
@@ -395,6 +395,7 @@ class User
         $cpost = isset ($form['cpost']) ? $form['cpost'] : null;
         $md5pwd = (isset ($form['pwd']) && $form['pwd'] != '') ? md5($form['pwd']) : null;
         $droits = isset ($form['droits']) ? $form['droits'] : 'oxfam';
+        $experience = isset ($form['experience']) ? $form['experience'] : 0 ;
         if (!$partiel)
             $approuve = isset ($form['approuve']) ? $form['approuve'] : 0;
 
@@ -402,7 +403,7 @@ class User
         $sql = 'UPDATE ' . PFX . 'users ';
         $sql .= 'SET civilite = :civilite, nom = :nom, prenom = :prenom, ';
         $sql .= 'telephone = :telephone, mail = :mail, ';
-        $sql .= 'adresse = :adresse, commune = :commune, cpost = :cpost ';
+        $sql .= 'adresse = :adresse, commune = :commune, cpost = :cpost, experience = :experience ';
         // si enregistrement partiel (auto-enregistrement), ne pas modifier les droits
         // ni le statut "approuvé"
         if (!$partiel)
@@ -422,6 +423,7 @@ class User
         $requete->bindParam(':adresse', $adresse, PDO::PARAM_STR, 100);
         $requete->bindParam(':commune', $commune, PDO::PARAM_STR, 50);
         $requete->bindParam(':cpost', $cpost, PDO::PARAM_STR, 6);
+        $requete->bindParam(':experience', $experience, PDO::PARAM_INT);
 
         if (!$partiel) {
             $requete->bindParam(':approuve', $approuve, PDO::PARAM_INT);

@@ -64,6 +64,13 @@ $(function () {
             $("#modalAddFerie").modal("hide");
             $("#gestConges").trigger("click");
           }
+          else {
+            bootbox.alert({
+              title: 'Jour férié',
+              message: 'Cette date est déjà fériée',
+              backdrop: false,
+            })
+          }
         }
       );
     }

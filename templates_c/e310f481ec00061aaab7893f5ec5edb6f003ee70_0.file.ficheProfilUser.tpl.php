@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-08 09:31:07
+/* Smarty version 4.3.1, created on 2024-04-08 18:13:42
   from '/home/yves/www/newOxfam/templates/users/ficheProfilUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_66139d3b21cc39_39795031',
+  'unifunc' => 'content_661417b60697d3_71638152',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e310f481ec00061aaab7893f5ec5edb6f003ee70' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/users/ficheProfilUser.tpl',
-      1 => 1712065931,
+      1 => 1712584304,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66139d3b21cc39_39795031 (Smarty_Internal_Template $_smarty_tpl) {
+function content_661417b60697d3_71638152 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2>
   <u>[<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['civilite'] == 'F') {?>Madame
       <?php } elseif ($_smarty_tpl->tpl_vars['dataUser']->value['civilite'] == 'M') {?>Monsieur
@@ -110,7 +110,7 @@ function content_66139d3b21cc39_39795031 (Smarty_Internal_Template $_smarty_tpl)
         
       </div>
 
-      <div class="form-group pb-3 col-4">
+      <div class="form-group pb-3 col-3">
         <label for="pseudo">
           <i class="fa fa-user-secret" aria-hidden="true"></i>
           Pseudo
@@ -129,7 +129,7 @@ function content_66139d3b21cc39_39795031 (Smarty_Internal_Template $_smarty_tpl)
         />
       </div>
 
-      <div class="form-group pb-3 col-md-4 col-12">
+      <div class="form-group pb-3 col-md-3 col-12">
         <label for="mdp">Mot de passe</label>
         <div class="input-group">
           <span class="input-group-text addonMdp"
@@ -149,7 +149,7 @@ function content_66139d3b21cc39_39795031 (Smarty_Internal_Template $_smarty_tpl)
         </div>
       </div>
 
-      <div class="form-group pb-3 col-md-4 col-12">
+      <div class="form-group pb-3 col-md-3 col-12">
         <label for="mdp">Mot de passe</label>
         <div class="input-group openModal">
           <span class="input-group-text addonMdp"
@@ -166,6 +166,17 @@ function content_66139d3b21cc39_39795031 (Smarty_Internal_Template $_smarty_tpl)
             aria-describedby="addonMdp"
             readonly
           />
+        </div>
+      </div>
+
+      <div class="form-group pb-3 col-md-3 col-12">
+        <label for="experience">Expérience</label>
+        <div class="openModal">
+          <select name="experience" id="experience" class="form-control" readonly>
+            <option value="0"<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['experience'] == 0) {?> selected<?php }?>>De base</option>
+            <option value="1"<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['experience'] == 1) {?> selected<?php }?>>Bonne</option>
+            <option value="2"<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['experience'] == 2) {?> selected<?php }?>>Très bonne</option>
+          </select>
         </div>
       </div>
 

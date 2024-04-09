@@ -1,3 +1,4 @@
+<!-- modal -->
 <div
   class="modal fade"
   id="modalEditUser"
@@ -75,24 +76,24 @@
                   type="button" 
                   class="btn btn-approuve {if $dataUser.approuve == 1}btn-success{else}btn-outline-success{/if}" 
                   data-value="1"
-                  {if $dataUser == $self} disabled title="Vous ne pouvez pas modifier cet item"{/if}>
+                  {if $dataUser.pseudo == $self.pseudo} disabled title="Vous ne pouvez pas modifier cet item"{/if}>
                   Oui
                 </button>
                 <button 
                   type="button" 
                   class="btn btn-approuve {if $dataUser.approuve == 0}btn-danger{else}btn-outline-danger{/if}" 
                   data-value="0"
-                  {if $dataUser == $self} disabled title="Vous ne pouvez pas modifier cet item"{/if}>
+                  {if $dataUser.pseudo == $self.pseudo} disabled title="Vous ne pouvez pas modifier cet item"{/if}>
                   Non
                 </button>
               </div>
-              {if $dataUser == $self}
+              {if $dataUser.pseudo == $self.pseudo}
               <span class="helpBlock form-text">Non modifiable</span>
               {/if}
    
             </div>
 
-            <div class="form-group pb-3 col-4">
+            <div class="form-group pb-3 col-3">
               <label for="pseudo"><i class="fa fa-user-secret"></i> Pseudo</label>
               <input type="text"
               class="form-control"
@@ -105,7 +106,7 @@
               <div class=">helpBlock form-text">Non modifiable</div>
             </div>
 
-            <div class="form-group pb-3 col-4">
+            <div class="form-group pb-3 col-3">
               <label for="pwd">M. passe</label>
               <div class="input-group mb-3">
                 <span class="input-group-text addonMdp"><i class="fa fa-eye"></i></span>
@@ -120,7 +121,7 @@
               </div>
             </div>
 
-            <div class="form-group pb-3 col-4">
+            <div class="form-group pb-3 col-3">
               <label for="pwd2">M. passe (encore)</label>
               <div class="input-group mb-3">
                 <span class="input-group-text addonMdp"><i class="fa fa-eye"></i></span>
@@ -133,6 +134,15 @@
               placeholder="Laisser vide si inchangé" 
               aria-describedby="addonMdp">
               </div>
+            </div>
+
+            <div class="form-group pb-3 col-3">
+              <label for="experience">Expérience</label>
+              <select name="experience" id="experience" class="form-control">
+                <option value="0"{if $dataUser.experience == 0} selected{/if}>De base</option>
+                <option value="1"{if $dataUser.experience == 1} selected{/if}>Bonne</option>
+                <option value="2"{if $dataUser.experience == 2} selected{/if}>Très bonne</option>
+              </select>
             </div>
 
             <div class="form-group pb-3 col-4">

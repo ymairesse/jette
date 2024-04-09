@@ -1,5 +1,4 @@
 $(function () {
-
   $("body").on("click", "#gestInscriptions", function (event) {
     testSession(event);
     $.post("inc/gestion/getCalendar4gestion.inc.php", {}, function (resultat) {
@@ -169,7 +168,7 @@ $(function () {
     $(".me").removeClass("toDelete");
     // suppression de tous les boutons temporaires
     $(".candidat").remove();
-    
+
     $("#gestInscriptions").trigger("click");
   });
 
@@ -250,7 +249,7 @@ $(function () {
       function (resultat) {
         // le resultat est la valeur actuelle du champ "confirme"
         ceci.data("confirme", resultat);
-        if (resultat == 1) 
+        if (resultat == 1)
           ceci
             .closest(".btn-group")
             .find(".check")
@@ -290,58 +289,136 @@ $(function () {
   // reset des confirmations d'inscriptions pour jusqu'à 3 lignes
   // voir le widget en début de ligne
   // ------------------------------------------------------------------
-  $('body').on('click', '.btn-resetMulti', function(event){
+  $("body").on("click", ".btn-resetMulti", function (event) {
     testSession(event);
     var ceci = $(this);
-    var nb = ceci.data('nombre');
-    var date = ceci.closest('tr').data(date);
+    var nb = ceci.data("nombre");
+    var date = ceci.closest("tr").data(date);
     var idContexte = $(this).closest("tr").data("idcontexte");
     // dans la même ligne du tableau, chercher tous les div.listeBenevoles
     // il en existe un par cellule, contenant un certain nombre de lignes
-    var listeBenevoles = ceci.closest('tr').find('.listeBenevoles');
+    var listeBenevoles = ceci.closest("tr").find(".listeBenevoles");
     ceci
       .closest("tr")
       .find(".listeBenevoles")
       .each(function (index) {
         // Pour chaque liste des bénévoles, chercher les boutons de confirmation
         var checkBtns = $(this).find(".btn-confirme");
-        // pour chacun d'eux, si l'index de la boucle "each" est <= nb -1 
+        // pour chacun d'eux, si l'index de la boucle "each" est <= nb -1
         // (noter que la numérotation commence à 0)
         // et qu'il a le statut "confirme", cliquer
         checkBtns.each(function (index) {
-          if ((index <= nb - 1) && ($(this).data('confirme') == 1)){
+          if (index <= nb - 1 && $(this).data("confirme") == 1) {
             $(this).trigger("click");
-          }           
+          }
         });
       });
-  })
+  });
 
   // -------------------------------------------------------------------
   // Gel des inscriptions pour les différentes périodes
   // -------------------------------------------------------------------
-  $('body').on('click', '#gestFreeze', function(event){
+  $("body").on("click", "#gestFreeze", function (event) {
     testSession(event);
-    $.post('inc/gestion/gestFreeze.inc.php', {
-    }, function(resultat){
-      $('#modal').html(resultat);
-      $('#modalFreezes').modal('show');
-    })
-  })
+    $.post("inc/gestion/gestFreeze.inc.php", {}, function (resultat) {
+      $("#modal").html(resultat);
+      $("#modalFreezes").modal("show");
+    });
+  });
 
   // ----------------------------------------------------------------
   // Enregistrement du gel des inscriptions
   // ----------------------------------------------------------------
-  $('body').on('click', '#btn-modalSaveFreezes', function(event){
+  $("body").on("click", "#btn-modalSaveFreezes", function (event) {
     testSession(event);
-    var formulaire = $('#form-freezes').serialize();
-    $.post('inc/gestion/saveModalFreezes.inc.php', {
-      formulaire: formulaire
-    }, function(nb){
-      bootbox.alert({
-        title: 'Enregistrement',
-        message: nb + ' enregistrement(s) effectué(s)'
-      })
-    })
-  })
+    var formulaire = $("#form-freezes").serialize();
+    $.post(
+      "inc/gestion/saveModalFreezes.inc.php",
+      {
+        formulaire: formulaire,
+      },
+      function (nb) {
+        bootbox.alert({
+          title: "Enregistrement",
+          message: nb + " enregistrement(s) effectué(s)",
+        });
+      }
+    );
+  });
 
+  // ---------------------------------------------------------------
+  // Liste des nouveaux bénévoles à approuver
+  // ---------------------------------------------------------------
+  $("body").on("click", "#approbationUsers", function (event) {
+    testSession(event);
+    $.post(
+      "inc/gestion/getModalListeApprobation.inc.php",
+      {},
+      function (resultat) {
+        $("#modal").html(resultat);
+        $("#modalApprobation").modal("show");
+      }
+    );
+  });
+
+  // --------------------------------------------------------------------------
+  // Suppression définitive d'une demande d'inscription (lors de l'approbation)
+  // --------------------------------------------------------------------------
+  $("body").on("click", ".btn-delApprobation", function () {
+    var ceci = $(this);
+    var pseudo = ceci.closest("tr").data("pseudo");
+    var nom = ceci.closest("tr").data("nom");
+    bootbox.confirm({
+      title: "Suppression demande d'inscription",
+      backdrop: false,
+      animate: true,
+      message:
+        "Veuillez confirmer la suppression définitive de la demande d'inscription de <strong>" +
+        nom + "</strong>",
+      callback: function(result){
+        if (result == true) {
+          $.post('inc/users/deleteUser.inc.php', {
+            pseudo: pseudo
+          }, function(resultat){
+            if (resultat == 1) {
+              ceci.closest('tr').fadeOut(1000, function(){$(this).remove()});
+              }
+          })
+        }
+      }
+    });
+    
+  });
+  //
+
+  // ---------------------------------------------------------------
+  // Enregistrement des approbations depuis la boîte modale
+  // ---------------------------------------------------------------
+  $("body").on("click", "#btn-modalSaveApprobation", function (event) {
+    testSession(event);
+    var formulaire = $("#formApprobation").serialize();
+    $.post(
+      "inc/gestion/saveApprobationsUsers.inc.php",
+      {
+        formulaire: formulaire,
+      },
+      function (resultatJSON) {
+        $("#modalApprobation").modal("hide");
+        var resultat = JSON.parse(resultatJSON);
+        var approuve = resultat["approuve"];
+        var envoye = resultat["envoye"];
+        var echoue = resultat["echoue"];
+        bootbox.alert({
+          title: "Approbation des inscriptions",
+          message:
+            approuve +
+            " demande(s) approuvée(s)<br>" +
+            envoye +
+            " mail(s) envoyé(s) <br>" +
+            echoue +
+            " envoi(s) de mail(s) en échec.",
+        });
+      }
+    );
+  });
 });

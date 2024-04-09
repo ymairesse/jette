@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-08 09:29:37
+/* Smarty version 4.3.1, created on 2024-04-09 14:22:22
   from '/home/yves/www/newOxfam/templates/users/modal/modalEditUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_66139ce1be0c53_92365708',
+  'unifunc' => 'content_661532fe5dd3a9_42967638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'add4ecb9c3367630f0d84beb0c8c370320c3f93e' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/users/modal/modalEditUser.tpl',
-      1 => 1710143834,
+      1 => 1712664393,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66139ce1be0c53_92365708 (Smarty_Internal_Template $_smarty_tpl) {
-?><div
+function content_661532fe5dd3a9_42967638 (Smarty_Internal_Template $_smarty_tpl) {
+?><!-- modal -->
+<div
   class="modal fade"
   id="modalEditUser"
   data-bs-backdrop="static"
@@ -101,24 +102,24 @@ function content_66139ce1be0c53_92365708 (Smarty_Internal_Template $_smarty_tpl)
                   type="button" 
                   class="btn btn-approuve <?php if ($_smarty_tpl->tpl_vars['dataUser']->value['approuve'] == 1) {?>btn-success<?php } else { ?>btn-outline-success<?php }?>" 
                   data-value="1"
-                  <?php if ($_smarty_tpl->tpl_vars['dataUser']->value == $_smarty_tpl->tpl_vars['self']->value) {?> disabled title="Vous ne pouvez pas modifier cet item"<?php }?>>
+                  <?php if ($_smarty_tpl->tpl_vars['dataUser']->value['pseudo'] == $_smarty_tpl->tpl_vars['self']->value['pseudo']) {?> disabled title="Vous ne pouvez pas modifier cet item"<?php }?>>
                   Oui
                 </button>
                 <button 
                   type="button" 
                   class="btn btn-approuve <?php if ($_smarty_tpl->tpl_vars['dataUser']->value['approuve'] == 0) {?>btn-danger<?php } else { ?>btn-outline-danger<?php }?>" 
                   data-value="0"
-                  <?php if ($_smarty_tpl->tpl_vars['dataUser']->value == $_smarty_tpl->tpl_vars['self']->value) {?> disabled title="Vous ne pouvez pas modifier cet item"<?php }?>>
+                  <?php if ($_smarty_tpl->tpl_vars['dataUser']->value['pseudo'] == $_smarty_tpl->tpl_vars['self']->value['pseudo']) {?> disabled title="Vous ne pouvez pas modifier cet item"<?php }?>>
                   Non
                 </button>
               </div>
-              <?php if ($_smarty_tpl->tpl_vars['dataUser']->value == $_smarty_tpl->tpl_vars['self']->value) {?>
+              <?php if ($_smarty_tpl->tpl_vars['dataUser']->value['pseudo'] == $_smarty_tpl->tpl_vars['self']->value['pseudo']) {?>
               <span class="helpBlock form-text">Non modifiable</span>
               <?php }?>
    
             </div>
 
-            <div class="form-group pb-3 col-4">
+            <div class="form-group pb-3 col-3">
               <label for="pseudo"><i class="fa fa-user-secret"></i> Pseudo</label>
               <input type="text"
               class="form-control"
@@ -132,7 +133,7 @@ function content_66139ce1be0c53_92365708 (Smarty_Internal_Template $_smarty_tpl)
               <div class=">helpBlock form-text">Non modifiable</div>
             </div>
 
-            <div class="form-group pb-3 col-4">
+            <div class="form-group pb-3 col-3">
               <label for="pwd">M. passe</label>
               <div class="input-group mb-3">
                 <span class="input-group-text addonMdp"><i class="fa fa-eye"></i></span>
@@ -147,7 +148,7 @@ function content_66139ce1be0c53_92365708 (Smarty_Internal_Template $_smarty_tpl)
               </div>
             </div>
 
-            <div class="form-group pb-3 col-4">
+            <div class="form-group pb-3 col-3">
               <label for="pwd2">M. passe (encore)</label>
               <div class="input-group mb-3">
                 <span class="input-group-text addonMdp"><i class="fa fa-eye"></i></span>
@@ -160,6 +161,15 @@ function content_66139ce1be0c53_92365708 (Smarty_Internal_Template $_smarty_tpl)
               placeholder="Laisser vide si inchangé" 
               aria-describedby="addonMdp">
               </div>
+            </div>
+
+            <div class="form-group pb-3 col-3">
+              <label for="experience">Expérience</label>
+              <select name="experience" id="experience" class="form-control">
+                <option value="0"<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['experience'] == 0) {?> selected<?php }?>>De base</option>
+                <option value="1"<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['experience'] == 1) {?> selected<?php }?>>Bonne</option>
+                <option value="2"<?php if ($_smarty_tpl->tpl_vars['dataUser']->value['experience'] == 2) {?> selected<?php }?>>Très bonne</option>
+              </select>
             </div>
 
             <div class="form-group pb-3 col-4">

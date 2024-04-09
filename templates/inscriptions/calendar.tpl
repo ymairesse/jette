@@ -122,6 +122,7 @@
           {if $dataPeriode.closed != 1}
 
           <!-- Bouton d'inscription -->
+          <!-- n'est pas présenté si le statut de freeze = 2 -->
           <button
             type="button"
             class="btn btn-sm btn-inscription pull-right btn-success {if ($freezeStatus == 2)}d-none{/if}"
@@ -135,6 +136,7 @@
           </button>
 
           <!-- Bouton de désinscription -->
+          <!-- n'est pas présenté si le statut de freeze = 1 ou = 2 (soit >= 1) -->
           <button
             type="button"
             class="btn btn-sm btn-inscription pull-right btn-danger {if ($freezeStatus >= 1)}d-none{/if}"
@@ -165,7 +167,7 @@
                 {/if}
               </span>
               {$dataBenevole.civilite} {$dataBenevole.prenom}
-              {$dataBenevole.nom}
+              {$dataBenevole.nom} <span class="badge text-bg-warning">e{$dataBenevole.experience}</span>
             </span>
             <span
               class="d-md-none d-sm-block"
@@ -175,7 +177,7 @@
                 {if $dataBenevole.confirme == 1}<i class="fa fa-check"></i>
                 {/if}
               </span>
-              {$dataBenevole.prenom}
+              {$dataBenevole.prenom} <span class="badge text-bg-warning">e{$dataBenevole.experience}</span>
             </span>
           </button>
           {/foreach} {/if}
@@ -186,6 +188,11 @@
     </tr>
     {/foreach}
   </table>
+  <ul class="list-unstyled">
+    <li><span class="badge text-bg-warning">e1</span> : bénévole débutant·e; ne devrait pas être seul·e</li>
+    <li><span class="badge text-bg-warning">e2</span> : bénévole expérimenté·e</li>
+    <li><span class="badge text-bg-warning">e3</span> : bénévole très expérimenté·e; peut conseiller en cas de difficulté</li>
+  </ul>
 </form>
 
 <style>
@@ -195,6 +202,11 @@
 </style>
 
 <script>
+
+  // --------------------------------------------------------------
+  // calculer la largeur des colonnes du tableau en fonction du
+  // nombre de périodes de permanences
+  // --------------------------------------------------------------
   function largeurTd() {
     var tableau = $("table#calendar");
     var nbCols = tableau.find("tr:first-child td").length - 1;
@@ -203,6 +215,9 @@
     $(".tdwidth").prop("width", strWidth);
   }
 
+  // --------------------------------------------------------------
+  // Raffraîchir le widget de navigation de mois en mois
+  // --------------------------------------------------------------
   function dateNavigation() {
     const date = new Date();
     var month = date.getMonth() + 1;

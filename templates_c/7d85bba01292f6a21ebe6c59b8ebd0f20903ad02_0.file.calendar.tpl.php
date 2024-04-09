@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-08 09:59:11
+/* Smarty version 4.3.1, created on 2024-04-09 14:11:14
   from '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6613a3cf0b98e8_24186876',
+  'unifunc' => 'content_6615306271a0f4_53818535',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d85bba01292f6a21ebe6c59b8ebd0f20903ad02' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl',
-      1 => 1712563146,
+      1 => 1712644130,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6613a3cf0b98e8_24186876 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6615306271a0f4_53818535 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h1>Calendrier des permanences</h1>
@@ -186,6 +186,7 @@ _<?php echo $_smarty_tpl->tpl_vars['noPeriode']->value;?>
           <?php if ($_smarty_tpl->tpl_vars['dataPeriode']->value['closed'] != 1) {?>
 
           <!-- Bouton d'inscription -->
+          <!-- n'est pas présenté si le statut de freeze = 2 -->
           <button
             type="button"
             class="btn btn-sm btn-inscription pull-right btn-success <?php if (($_smarty_tpl->tpl_vars['freezeStatus']->value == 2)) {?>d-none<?php }?>"
@@ -201,6 +202,7 @@ _<?php echo $_smarty_tpl->tpl_vars['noPeriode']->value;?>
           </button>
 
           <!-- Bouton de désinscription -->
+          <!-- n'est pas présenté si le statut de freeze = 1 ou = 2 (soit >= 1) -->
           <button
             type="button"
             class="btn btn-sm btn-inscription pull-right btn-danger <?php if (($_smarty_tpl->tpl_vars['freezeStatus']->value >= 1)) {?>d-none<?php }?>"
@@ -241,7 +243,8 @@ $_smarty_tpl->tpl_vars['dataBenevole']->do_else = false;
  <?php echo $_smarty_tpl->tpl_vars['dataBenevole']->value['prenom'];?>
 
               <?php echo $_smarty_tpl->tpl_vars['dataBenevole']->value['nom'];?>
-
+ <span class="badge text-bg-warning">e<?php echo $_smarty_tpl->tpl_vars['dataBenevole']->value['experience'];?>
+</span>
             </span>
             <span
               class="d-md-none d-sm-block"
@@ -255,7 +258,8 @@ $_smarty_tpl->tpl_vars['dataBenevole']->do_else = false;
                 <?php }?>
               </span>
               <?php echo $_smarty_tpl->tpl_vars['dataBenevole']->value['prenom'];?>
-
+ <span class="badge text-bg-warning">e<?php echo $_smarty_tpl->tpl_vars['dataBenevole']->value['experience'];?>
+</span>
             </span>
           </button>
           <?php
@@ -272,6 +276,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </table>
+  <ul class="list-unstyled">
+    <li><span class="badge text-bg-warning">e1</span> : bénévole débutant·e; ne devrait pas être seul·e</li>
+    <li><span class="badge text-bg-warning">e2</span> : bénévole expérimenté·e</li>
+    <li><span class="badge text-bg-warning">e3</span> : bénévole très expérimenté·e; peut conseiller en cas de difficulté</li>
+  </ul>
 </form>
 
 <style>
@@ -282,6 +291,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <?php echo '<script'; ?>
 >
+
+  // --------------------------------------------------------------
+  // calculer la largeur des colonnes du tableau en fonction du
+  // nombre de périodes de permanences
+  // --------------------------------------------------------------
   function largeurTd() {
     var tableau = $("table#calendar");
     var nbCols = tableau.find("tr:first-child td").length - 1;
@@ -290,6 +304,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     $(".tdwidth").prop("width", strWidth);
   }
 
+  // --------------------------------------------------------------
+  // Raffraîchir le widget de navigation de mois en mois
+  // --------------------------------------------------------------
   function dateNavigation() {
     const date = new Date();
     var month = date.getMonth() + 1;

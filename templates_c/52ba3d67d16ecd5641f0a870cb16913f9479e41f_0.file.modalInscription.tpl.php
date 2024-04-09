@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-05 13:19:26
+/* Smarty version 4.3.1, created on 2024-04-09 14:39:27
   from '/home/yves/www/newOxfam/templates/users/modal/modalInscription.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_660fde3e7eccf7_75762055',
+  'unifunc' => 'content_661536ff7ec402_04764695',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52ba3d67d16ecd5641f0a870cb16913f9479e41f' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/users/modal/modalInscription.tpl',
-      1 => 1711975600,
+      1 => 1712666269,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660fde3e7eccf7_75762055 (Smarty_Internal_Template $_smarty_tpl) {
+function content_661536ff7ec402_04764695 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div
   class="modal fade"
   id="modalAutoInscription"
@@ -266,18 +266,18 @@ function phoneFormatter() {
       });
     };
 
-    $.validator.addMethod("lettresEtSymboles", function(value, element) {
-    // Expression régulière pour vérifier si le champ contient au moins 2 lettres et au plus 2 symboles non alphanumériques
-    var lettreRegex = /.*[a-zA-Z].*[a-zA-Z]/;
-    var symboleRegex = /[^a-zA-Z0-9]/g;
-    var symboles = value.match(symboleRegex);
-    var nombreSymboles = symboles ? symboles.length : 0;
-    return lettreRegex.test(value) && nombreSymboles <= 2;
-}, "Au moins deux lettres et au plus deux symboles.");
+
 
   $(document).ready(function () {
 
     $(phoneFormatter);
+
+
+    $.validator.addMethod("pwcheck", function (value, element) {
+      var countNum = (value.match(/[0-9]/g) || []).length;
+      var countLet = (value.match(/[a-zA-Z]/g) || []).length;
+      return countNum >= 2 && countLet >= 2;
+    });
 
     $("#modalFormInscription").validate({
       rules: {
@@ -297,7 +297,7 @@ function phoneFormatter() {
           required: true,
           minlength: 6,
           maxlength: 12,
-          lettresEtSymboles: true,
+          pwcheck: true,
         },
         pwd2: {
           minlength: 6,
@@ -307,6 +307,11 @@ function phoneFormatter() {
           required: true,
         }
       },
+      messages: {
+        pwd: {
+          pwcheck: "Au moins deux lettres et au moins deux chiffres"
+        }
+      }
     });
 
 

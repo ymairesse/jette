@@ -704,7 +704,7 @@ class Planning
 
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
         $sql = 'SELECT date, periode, calendar.pseudo, dateInscription, confirme, ';
-        $sql .= 'civilite, nom, prenom ';
+        $sql .= 'civilite, nom, prenom, experience ';
         $sql .= 'FROM ' . PFX . 'calendar as calendar ';
         $sql .= 'LEFT JOIN ' . PFX . 'users AS users ON users.pseudo = calendar.pseudo ';
         $sql .= 'WHERE date LIKE :yearMonth ';
@@ -1087,8 +1087,8 @@ class Planning
         return $listeMois;
     }
 
-        /**
-     * Effacement de tout le calendrier d'un $month et d'une $year donnés
+    /**
+     * Effacement de tout le calendrier planning d'un $month et d'une $year donnés
      * 
      * @param int $month
      * @param int $year
@@ -1108,6 +1108,63 @@ class Planning
 
         $nb = $requete->rowCount();
         
+        Application::DeconnexionPDO($connexion);
+
+        return $nb;
+    }
+
+    /**
+     * Recherche la liste de tous les bénévoles pas encore approuvés
+     * 
+     * @param 
+     * 
+     * @return array
+     */
+    public function getUnapprovedUsers(){
+        $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
+        $sql = 'SELECT pseudo, nom, prenom, mail ';
+        $sql .= 'FROM '.PFX.'users ';
+        $sql .= 'WHERE approuve = 0 ';
+        $sql .= 'ORDER BY nom, prenom ';
+        echo $sql;
+        $requete = $connexion->prepare($sql);
+
+        $resultat = $requete->execute();
+
+        $liste = array();
+        if ($resultat) {
+            $requete->setFetchMode(PDO::FETCH_ASSOC);
+            while ($ligne = $requete->fetch()){
+                $pseudo = $ligne['pseudo'];
+                $liste[$pseudo] = $ligne;
+            }
+        }
+        
+        Application::DeconnexionPDO($connexion);
+
+        return $liste;
+    }
+
+    /** 
+     * Approuve l'inscription de l'utilisateur $pseudo
+     * 
+     * @param string $pseudo
+     * 
+     * @return int
+     */
+    public function approuve($pseudo) {
+        $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
+        $sql = 'UPDATE '.PFX.'users ';
+        $sql .= 'SET approuve = 1 ';
+        $sql .= 'WHERE pseudo = :pseudo ';
+        $requete = $connexion->prepare($sql);
+
+        $requete->bindParam(':pseudo', $pseudo, PDO::PARAM_STR, 7);
+
+        $resultat = $requete->execute();
+
+        $nb = $requete->rowCount();
+
         Application::DeconnexionPDO($connexion);
 
         return $nb;

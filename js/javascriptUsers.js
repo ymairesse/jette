@@ -24,7 +24,7 @@ $(function () {
           formulaire: formulaire,
         },
         function (resultat) {
-          // $("#modalEditUser").modal("hide");
+          $("#modalEditUser").modal("hide");
           bootbox.alert({
             title: "Enregistrement",
             message:
@@ -33,6 +33,7 @@ $(function () {
                 : "Aucune modification effectuée",
           });
           // si la liste des utilisateurs est visible à l'écran
+          // c'est qu'on est en mode "admin"
           if ($("table#listeUsers") != null) {
             Cookies.set("pseudo", pseudo, { sameSite: "strict" });
             $("#gestUsers").trigger("click");
@@ -251,4 +252,6 @@ $(function () {
       },
     });
   });
+
+  
 });

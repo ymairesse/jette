@@ -6,11 +6,11 @@
       {foreach from=$listeDoubleContextes key=unIdContexte item=datesContexte} 
       <option value="{$unIdContexte}"{if $unIdContexte == $idContexte} selected{/if}>
 
-        Depuis le {$datesContexte[0]} 
+        Depuis le {$datesContexte[0]|date_format:'%d/%m/%Y'} 
          
-        {if $datesContexte[1] != "..." }
+        {if $datesContexte[1]!= "..." }
           jusqu'au 
-          {$datesContexte[1]} exclu
+          {$datesContexte[1]|date_format:'%d/%m/%Y'} exclu
           {else} 
           ... 
         {/if} 

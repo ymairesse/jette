@@ -82,7 +82,7 @@
         
       </div>
 
-      <div class="form-group pb-3 col-4">
+      <div class="form-group pb-3 col-3">
         <label for="pseudo">
           <i class="fa fa-user-secret" aria-hidden="true"></i>
           Pseudo
@@ -100,7 +100,7 @@
         />
       </div>
 
-      <div class="form-group pb-3 col-md-4 col-12">
+      <div class="form-group pb-3 col-md-3 col-12">
         <label for="mdp">Mot de passe</label>
         <div class="input-group">
           <span class="input-group-text addonMdp"
@@ -120,7 +120,7 @@
         </div>
       </div>
 
-      <div class="form-group pb-3 col-md-4 col-12">
+      <div class="form-group pb-3 col-md-3 col-12">
         <label for="mdp">Mot de passe</label>
         <div class="input-group openModal">
           <span class="input-group-text addonMdp"
@@ -137,6 +137,17 @@
             aria-describedby="addonMdp"
             readonly
           />
+        </div>
+      </div>
+
+      <div class="form-group pb-3 col-md-3 col-12">
+        <label for="experience">Expérience</label>
+        <div class="openModal">
+          <select name="experience" id="experience" class="form-control" readonly>
+            <option value="0"{if $dataUser.experience == 0} selected{/if}>De base</option>
+            <option value="1"{if $dataUser.experience == 1} selected{/if}>Bonne</option>
+            <option value="2"{if $dataUser.experience == 2} selected{/if}>Très bonne</option>
+          </select>
         </div>
       </div>
 

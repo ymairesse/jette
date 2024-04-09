@@ -149,8 +149,9 @@
                   {/if}
                 </span>
                 {$dataBenevole.civilite} {$dataBenevole.prenom}
-                {$dataBenevole.nom}
+                {$dataBenevole.nom} <span class="badge text-bg-warning">e{$dataBenevole.experience}</span>
               </span>
+              
               <span
                 class="d-lg-none d-md-block"
                 title="{$dataBenevole.civilite} {$dataBenevole.prenom} {$dataBenevole.nom}"
@@ -159,7 +160,8 @@
                   {if $dataBenevole.confirme == 1}<i class="fa fa-check"></i>
                   {/if}
                 </span>
-                {$dataBenevole.prenom}
+                {$dataBenevole.prenom} 
+                <span class="badge text-bg-warning">e{$dataBenevole.experience}</span>
               </span>
             </button>
             <button
@@ -182,6 +184,12 @@
     </tr>
     {/foreach}
   </table>
+  <ul class="list-unstyled">
+    <li><span class="badge text-bg-warning">e1</span> : bénévole débutant·e; ne devrait pas être seul·e</li>
+    <li><span class="badge text-bg-warning">e2</span> : bénévole expérimenté·e</li>
+    <li><span class="badge text-bg-warning">e3</span> : bénévole très expérimenté·e; peut conseiller en cas de difficulté</li>
+  </ul>
+  
 </form>
 
 <style>

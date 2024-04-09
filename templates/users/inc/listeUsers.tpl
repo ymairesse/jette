@@ -3,13 +3,13 @@
 <label class="w-100" for="listeUsers">Liste des utilisateurs
     <div class="btn-group float-end">
         <button
-          class="btn btn-sm btn-sort parNom py-0 {if (isset($sortUsers) && ($sortUsers == 'parNom') || (!(isset($sortUsers))))}btn-primary{else}btn-default{/if}"
+          class="btn btn-sm btn-sortGestion parNom py-0 {if (isset($sortUsers) && ($sortUsers == 'parNom') || (!(isset($sortUsers))))}btn-primary{else}btn-default{/if}"
           title="Par ordre des noms"
         >
         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i> Noms
         </button>
         <button
-          class="btn btn-sm btn-sort parPrenom py-0 {if isset($sortUsers) && ($sortUsers == 'parPrenom')}btn-primary{else}btn-default{/if}"
+          class="btn btn-sm btn-sortGestion parPrenom py-0 {if isset($sortUsers) && ($sortUsers == 'parPrenom')}btn-primary{else}btn-default{/if}"
           title="Par ordre des prénoms"
         >
         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i> Prénoms

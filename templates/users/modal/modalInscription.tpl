@@ -242,18 +242,18 @@ function phoneFormatter() {
       });
     };
 
-    $.validator.addMethod("lettresEtSymboles", function(value, element) {
-    // Expression régulière pour vérifier si le champ contient au moins 2 lettres et au plus 2 symboles non alphanumériques
-    var lettreRegex = /.*[a-zA-Z].*[a-zA-Z]/;
-    var symboleRegex = /[^a-zA-Z0-9]/g;
-    var symboles = value.match(symboleRegex);
-    var nombreSymboles = symboles ? symboles.length : 0;
-    return lettreRegex.test(value) && nombreSymboles <= 2;
-}, "Au moins deux lettres et au plus deux symboles.");
+
 
   $(document).ready(function () {
 
     $(phoneFormatter);
+
+
+    $.validator.addMethod("pwcheck", function (value, element) {
+      var countNum = (value.match(/[0-9]/g) || []).length;
+      var countLet = (value.match(/[a-zA-Z]/g) || []).length;
+      return countNum >= 2 && countLet >= 2;
+    });
 
     $("#modalFormInscription").validate({
       rules: {
@@ -273,7 +273,7 @@ function phoneFormatter() {
           required: true,
           minlength: 6,
           maxlength: 12,
-          lettresEtSymboles: true,
+          pwcheck: true,
         },
         pwd2: {
           minlength: 6,
@@ -283,6 +283,11 @@ function phoneFormatter() {
           required: true,
         }
       },
+      messages: {
+        pwd: {
+          pwcheck: "Au moins deux lettres et au moins deux chiffres"
+        }
+      }
     });
 
 

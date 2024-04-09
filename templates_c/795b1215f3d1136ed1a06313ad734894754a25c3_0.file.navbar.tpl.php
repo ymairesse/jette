@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-08 09:32:00
+/* Smarty version 4.3.1, created on 2024-04-09 08:53:15
   from '/home/yves/www/newOxfam/templates/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_66139d7056e455_45995266',
+  'unifunc' => 'content_6614e5dbdba3a9_26791811',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '795b1215f3d1136ed1a06313ad734894754a25c3' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/navbar.tpl',
-      1 => 1712561508,
+      1 => 1712645586,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66139d7056e455_45995266 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6614e5dbdba3a9_26791811 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"
@@ -129,6 +129,11 @@ function content_66139d7056e455_45995266 (Smarty_Internal_Template $_smarty_tpl)
               <a class="dropdown-item" id="gestUsers" href="#"
                 ><i class="fa fa-users"></i> Gestion des utilisateurs</a
               >
+            </li>
+            <li>
+              <a href="#" class="dropdown-item" id="approbationUsers">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Approbation nouveaux bénévoles
+              </a>
             </li>
 
             <?php }?>

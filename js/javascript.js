@@ -135,7 +135,7 @@ $(function () {
       callback: function (identifiant) {
         // préparation d'un token
         $.post(
-          "inc/prepareNewPasswd.inc.php",
+          "inc/users/prepareNewPasswd.inc.php",
           {
             identifiant: identifiant,
           },

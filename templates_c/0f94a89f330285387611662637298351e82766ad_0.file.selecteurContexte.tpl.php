@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-08 09:31:02
+/* Smarty version 4.3.1, created on 2024-04-09 19:25:57
   from '/home/yves/www/newOxfam/templates/conges/inc/selecteurContexte.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_66139d36dd3252_49496241',
+  'unifunc' => 'content_66157a25d62649_76230245',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f94a89f330285387611662637298351e82766ad' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/conges/inc/selecteurContexte.tpl',
-      1 => 1711187718,
+      1 => 1712683550,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66139d36dd3252_49496241 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="d-flex">
+function content_66157a25d62649_76230245 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
+?>
+<div class="d-flex">
     
     <label for="idContexte" class="me-3 text-danger" style="font-size:16pt">Contexte</label>
     <select class="form-select" name="idContexte" id="idContexte" aria-label="Contexte">
@@ -35,12 +37,12 @@ $_smarty_tpl->tpl_vars['datesContexte']->do_else = false;
       <option value="<?php echo $_smarty_tpl->tpl_vars['unIdContexte']->value;?>
 "<?php if ($_smarty_tpl->tpl_vars['unIdContexte']->value == $_smarty_tpl->tpl_vars['idContexte']->value) {?> selected<?php }?>>
 
-        Depuis le <?php echo $_smarty_tpl->tpl_vars['datesContexte']->value[0];?>
+        Depuis le <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['datesContexte']->value[0],'%d/%m/%Y');?>
  
          
         <?php if ($_smarty_tpl->tpl_vars['datesContexte']->value[1] != "...") {?>
           jusqu'au 
-          <?php echo $_smarty_tpl->tpl_vars['datesContexte']->value[1];?>
+          <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['datesContexte']->value[1],'%d/%m/%Y');?>
  exclu
           <?php } else { ?> 
           ... 

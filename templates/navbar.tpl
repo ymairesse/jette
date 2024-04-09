@@ -107,6 +107,11 @@
                 ><i class="fa fa-users"></i> Gestion des utilisateurs</a
               >
             </li>
+            <li>
+              <a href="#" class="dropdown-item" id="approbationUsers">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Approbation nouveaux bénévoles
+              </a>
+            </li>
 
             {/if}
             <li><hr class="dropdown-divider" /></li>

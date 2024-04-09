@@ -126,7 +126,8 @@ class Conges
      */
     public function addJourFerie($idContexte, $dateConge){
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
-        $sql = 'INSERT INTO '.PFX.'congesFeries ';
+        // on ignore l'insertion si le jour férié existe déjà
+        $sql = 'INSERT IGNORE INTO '.PFX.'congesFeries ';
         // il suffit d'une valeur de période pour initialiser le jour de conge
         $sql .= 'SET idContexte = :idContexte, dateConge = :dateConge, periode = 1 ';
         $requete = $connexion->prepare($sql);

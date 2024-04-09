@@ -428,30 +428,6 @@ class Application
     }
 
     /**
-     * Envoie un mail de rappel de mot de passe à l'utlisateur dont on a l'adresse.
-     *
-     * @param string $adresse adresse du destinataire
-     * @param string $texte texte du mail
-     *
-     * @return bool
-     */
-    public function mailPasswd($adresse, $texte)
-    {
-        // Créer une nouvelle instance de PHPMailer
-        $mail = new PHPMailer\PHPMailer\PHPMailer();
-        $mail->IsHTML(true);
-        $mail->SMTPDebug = 2;
-        $mail->CharSet = 'UTF-8';
-        $mail->From = MAILADMIN;
-        $mail->FromName = NOMADMIN;
-        $mail->AddAddress($adresse);
-        $mail->Subject = "Réinitialisation de votre mot de passe";
-        $mail->Body = $texte;
-
-        return !$mail->Send();
-    }
-
-    /**
      * renvoie le nom du mois en français depuis le numéro du mois
      * 
      * @param int $month

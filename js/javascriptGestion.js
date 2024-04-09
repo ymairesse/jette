@@ -67,7 +67,6 @@ $(function () {
   // -------------------------------------------------------
   // Navigation de mois en mois
   // -------------------------------------------------------
-
   $("body").on("click", ".navigationAdmin", function (event) {
     testSession(event);
 
@@ -109,7 +108,7 @@ $(function () {
   // ---------------------------------------------------------------------
 
   // -----------------------------------------------------------
-  // Nouvelle inscription admin d'un utilisateur sélectionné
+  // inscription admin à une permanence d'un utilisateur sélectionné
   // -----------------------------------------------------------
   $("body").on("click", "#calendarGestion .btn-inscription", function (event) {
     testSession(event);
@@ -288,7 +287,8 @@ $(function () {
   });
 
   // ------------------------------------------------------------------
-  // reset des confirmations pour jusqu'à 3 lignes
+  // reset des confirmations d'inscriptions pour jusqu'à 3 lignes
+  // voir le widget en début de ligne
   // ------------------------------------------------------------------
   $('body').on('click', '.btn-resetMulti', function(event){
     testSession(event);
@@ -343,8 +343,5 @@ $(function () {
       })
     })
   })
-
-
-
 
 });

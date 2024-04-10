@@ -16,7 +16,9 @@
 <h2 class="text-center">
   {$monthName} {$year}
   <span class="pull-right"
-    ><button
+    >
+    <div class="btn-group">
+    <button
       class="btn btn-primary btn-sm navigationAdmin"
       data-gap="-1"
       title="Mois précédent"
@@ -27,11 +29,11 @@
     </button>
     <button
       type="button"
-      class="btn btn-secondary btn-sm"
-      id="btn-todayAdmin"
+      class="btn btn-success btn-sm"
+      id="btn-today"
       title="Ce mois-ci"
     >
-      Mois actuel
+      Mois actuel: {$smarty.now|date_format:"%B"|upper}
     </button>
     <button
       class="btn btn-primary btn-sm navigationAdmin"
@@ -42,6 +44,7 @@
     >
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </button>
+  </div>
   </span>
 </h2>
 

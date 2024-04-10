@@ -104,6 +104,20 @@ $(function () {
       $("#gestInscriptions").trigger("click");
     }
   });
+
+  // --------------------------------------------------------
+  // retour au mois actuel
+  // --------------------------------------------------------
+  $("body").on("click", "#btn-todayAdmin", function (event) {
+    testSession(event);
+    var month = $(this).data("month");
+    var year = $(this).data("year");
+
+    Cookies.set("year", year, { sameSite: "strict" });
+    Cookies.set("month", month, { sameSite: "strict" });
+
+    $("#gestInscriptions").trigger("click");
+  });
   // ---------------------------------------------------------------------
 
   // -----------------------------------------------------------

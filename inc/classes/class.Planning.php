@@ -1126,7 +1126,6 @@ class Planning
         $sql .= 'FROM '.PFX.'users ';
         $sql .= 'WHERE approuve = 0 ';
         $sql .= 'ORDER BY nom, prenom ';
-        echo $sql;
         $requete = $connexion->prepare($sql);
 
         $resultat = $requete->execute();

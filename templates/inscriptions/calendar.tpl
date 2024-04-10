@@ -30,7 +30,9 @@
   </span>
   {/if}
   <span class="pull-right"
-    ><button
+    >
+    <div class="btn-group">
+    <button
       class="btn btn-primary btn-sm navigation"
       data-gap="-1"
       title="Mois précédent"
@@ -41,11 +43,11 @@
     </button>
     <button
       type="button"
-      class="btn btn-secondary btn-sm"
+      class="btn btn-success btn-sm"
       id="btn-today"
       title="Ce mois-ci"
     >
-      {$smarty.now|date_format:"%B"|upper}
+      Mois actuel: {$smarty.now|date_format:"%B"|upper}
     </button>
     <button
       class="btn btn-primary btn-sm navigation"
@@ -56,6 +58,7 @@
     >
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </button>
+  </div>
   </span>
 </h2>
 

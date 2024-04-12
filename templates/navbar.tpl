@@ -124,9 +124,8 @@
         {/if}
         <li>
           <i
-            id="ajaxLoader"
             style="display: none"
-            class="fa fa-spinner fa-spin fa-3x fa-fw"
+            class="fa fa-spinner fa-spin fa-3x fa-fw ajaxLoader"
           ></i>
         </li>
       </ul>

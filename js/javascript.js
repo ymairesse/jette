@@ -35,11 +35,11 @@ $(function () {
 
   $(document).ajaxStart(function (event) {
     // Affiche l'image de chargement au début de chaque appel ajax
-    $("#ajaxLoader").show();
+    $(".ajaxLoader").show();
   });
   $(document).ajaxStop(function () {
     // Cache l'image de chargement à la fin de chaque appel ajax
-    $("#ajaxLoader").hide();
+    $(".ajaxLoader").hide();
   });
 
   // login - logout ------------------------------------------------

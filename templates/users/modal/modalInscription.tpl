@@ -73,7 +73,7 @@
               <input type="text"
               class="form-control"
               name="pseudo"
-              id="pseudo"
+              id="modalPseudo"
               autocomplete="off"
               value=""
               readonly
@@ -198,6 +198,10 @@
         </form>
       </div>
       <div class="modal-footer">
+        <i
+        style="display: none"
+        class="fa fa-spinner fa-spin fa-fw ajaxLoader"
+      ></i>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Fermer
         </button>
@@ -215,7 +219,7 @@
       color: red;
     }
 
-    #pseudo {
+    #modalPseudo {
     background-color: pink;
     font-size: 14pt;
     color: red;
@@ -242,18 +246,18 @@ function phoneFormatter() {
       });
     };
 
-
+    $.validator.addMethod("lettresEtSymboles", function(value, element) {
+    // Expression régulière pour vérifier si le champ contient au moins 2 lettres et au plus 2 symboles non alphanumériques
+    var lettreRegex = /.*[a-zA-Z].*[a-zA-Z]/;
+    var symboleRegex = /[^a-zA-Z0-9]/g;
+    var symboles = value.match(symboleRegex);
+    var nombreSymboles = symboles ? symboles.length : 0;
+    return lettreRegex.test(value) && nombreSymboles <= 2;
+}, "Au moins deux lettres et au plus deux symboles.");
 
   $(document).ready(function () {
 
     $(phoneFormatter);
-
-
-    $.validator.addMethod("pwcheck", function (value, element) {
-      var countNum = (value.match(/[0-9]/g) || []).length;
-      var countLet = (value.match(/[a-zA-Z]/g) || []).length;
-      return countNum >= 2 && countLet >= 2;
-    });
 
     $("#modalFormInscription").validate({
       rules: {
@@ -273,7 +277,7 @@ function phoneFormatter() {
           required: true,
           minlength: 6,
           maxlength: 12,
-          pwcheck: true,
+          lettresEtSymboles: true,
         },
         pwd2: {
           minlength: 6,
@@ -283,11 +287,6 @@ function phoneFormatter() {
           required: true,
         }
       },
-      messages: {
-        pwd: {
-          pwcheck: "Au moins deux lettres et au moins deux chiffres"
-        }
-      }
     });
 
 
@@ -307,7 +306,7 @@ function phoneFormatter() {
       },
       function (resultatJSON) {
         var resultat = JSON.parse(resultatJSON);
-        $("#pseudo").val(resultat["pseudo"]);
+        $("#modalPseudo").val(resultat["pseudo"]);
         if (resultat["pseudoExiste"] == true) {
           $("#pseudoExiste").text("Ce pseudo existe déjà");
           $('#btn-modalSaveUser').attr('disabled', true);

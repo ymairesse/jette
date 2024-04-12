@@ -22,13 +22,20 @@
 </div>
 
 <h2 class="text-center">
-  {$monthName} {$year} {if $freezeStatus != 0}
-  <span
-    title="{if $freezeStatus ==1}Les désinscriptions ne sont plus possibles{elseif $freezeStatus == 2}Ni inscription, ni désinscription{/if}"
-  >
-    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-  </span>
+
+  {$monthName} {$year} 
+  {if $freezeStatus != 0}
+    <span
+      title="{if $freezeStatus ==1 }
+          Les désinscriptions ne sont plus possibles
+        {elseif $freezeStatus == 2}
+          Ni inscription, ni désinscription
+          {/if}"
+    >
+      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    </span>
   {/if}
+  
   <span class="pull-right"
     >
     <div class="btn-group">
@@ -73,6 +80,7 @@
     value="{$freezeStatus}"
   />
 
+  <div style="height: 80vh; overflow: auto;">
   <table
     class="table table-condensed freeze_{$freezeStatus|default:0}"
     id="calendar"
@@ -191,6 +199,7 @@
     </tr>
     {/foreach}
   </table>
+</div>
   <ul class="list-unstyled">
     <li><span class="badge text-bg-warning">e1</span> : bénévole débutant·e; ne devrait pas être seul·e</li>
     <li><span class="badge text-bg-warning">e2</span> : bénévole expérimenté·e</li>

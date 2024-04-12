@@ -48,6 +48,7 @@
   </span>
 </h2>
 
+<div style="height: 80vh; overflow: auto;">
 <form id="formGrid">
   <input type="hidden" name="month" id="month" value="{$month}" />
   <input type="hidden" name="year" id="year" value="{$year}" />
@@ -187,6 +188,7 @@
     </tr>
     {/foreach}
   </table>
+</div>  
   <ul class="list-unstyled">
     <li><span class="badge text-bg-warning">e1</span> : bénévole débutant·e; ne devrait pas être seul·e</li>
     <li><span class="badge text-bg-warning">e2</span> : bénévole expérimenté·e</li>

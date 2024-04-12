@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-09 14:39:27
+/* Smarty version 4.3.1, created on 2024-04-12 08:36:48
   from '/home/yves/www/newOxfam/templates/users/modal/modalInscription.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_661536ff7ec402_04764695',
+  'unifunc' => 'content_6618d6801e2de5_94635915',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52ba3d67d16ecd5641f0a870cb16913f9479e41f' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/users/modal/modalInscription.tpl',
-      1 => 1712666269,
+      1 => 1712903785,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_661536ff7ec402_04764695 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6618d6801e2de5_94635915 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div
   class="modal fade"
   id="modalAutoInscription"
@@ -96,7 +96,7 @@ function content_661536ff7ec402_04764695 (Smarty_Internal_Template $_smarty_tpl)
               <input type="text"
               class="form-control"
               name="pseudo"
-              id="pseudo"
+              id="modalPseudo"
               autocomplete="off"
               value=""
               readonly
@@ -221,6 +221,10 @@ function content_661536ff7ec402_04764695 (Smarty_Internal_Template $_smarty_tpl)
         </form>
       </div>
       <div class="modal-footer">
+        <i
+        style="display: none"
+        class="fa fa-spinner fa-spin fa-fw ajaxLoader"
+      ></i>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Fermer
         </button>
@@ -238,7 +242,7 @@ function content_661536ff7ec402_04764695 (Smarty_Internal_Template $_smarty_tpl)
       color: red;
     }
 
-    #pseudo {
+    #modalPseudo {
     background-color: pink;
     font-size: 14pt;
     color: red;
@@ -266,18 +270,18 @@ function phoneFormatter() {
       });
     };
 
-
+    $.validator.addMethod("lettresEtSymboles", function(value, element) {
+    // Expression régulière pour vérifier si le champ contient au moins 2 lettres et au plus 2 symboles non alphanumériques
+    var lettreRegex = /.*[a-zA-Z].*[a-zA-Z]/;
+    var symboleRegex = /[^a-zA-Z0-9]/g;
+    var symboles = value.match(symboleRegex);
+    var nombreSymboles = symboles ? symboles.length : 0;
+    return lettreRegex.test(value) && nombreSymboles <= 2;
+}, "Au moins deux lettres et au plus deux symboles.");
 
   $(document).ready(function () {
 
     $(phoneFormatter);
-
-
-    $.validator.addMethod("pwcheck", function (value, element) {
-      var countNum = (value.match(/[0-9]/g) || []).length;
-      var countLet = (value.match(/[a-zA-Z]/g) || []).length;
-      return countNum >= 2 && countLet >= 2;
-    });
 
     $("#modalFormInscription").validate({
       rules: {
@@ -297,7 +301,7 @@ function phoneFormatter() {
           required: true,
           minlength: 6,
           maxlength: 12,
-          pwcheck: true,
+          lettresEtSymboles: true,
         },
         pwd2: {
           minlength: 6,
@@ -307,11 +311,6 @@ function phoneFormatter() {
           required: true,
         }
       },
-      messages: {
-        pwd: {
-          pwcheck: "Au moins deux lettres et au moins deux chiffres"
-        }
-      }
     });
 
 
@@ -331,7 +330,7 @@ function phoneFormatter() {
       },
       function (resultatJSON) {
         var resultat = JSON.parse(resultatJSON);
-        $("#pseudo").val(resultat["pseudo"]);
+        $("#modalPseudo").val(resultat["pseudo"]);
         if (resultat["pseudoExiste"] == true) {
           $("#pseudoExiste").text("Ce pseudo existe déjà");
           $('#btn-modalSaveUser').attr('disabled', true);

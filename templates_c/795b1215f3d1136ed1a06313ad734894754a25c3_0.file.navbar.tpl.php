@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-09 08:53:15
+/* Smarty version 4.3.1, created on 2024-04-12 08:36:34
   from '/home/yves/www/newOxfam/templates/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6614e5dbdba3a9_26791811',
+  'unifunc' => 'content_6618d6722b9499_02429399',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '795b1215f3d1136ed1a06313ad734894754a25c3' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/navbar.tpl',
-      1 => 1712645586,
+      1 => 1712903705,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6614e5dbdba3a9_26791811 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6618d6722b9499_02429399 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"
@@ -148,9 +148,8 @@ function content_6614e5dbdba3a9_26791811 (Smarty_Internal_Template $_smarty_tpl)
         <?php }?>
         <li>
           <i
-            id="ajaxLoader"
             style="display: none"
-            class="fa fa-spinner fa-spin fa-3x fa-fw"
+            class="fa fa-spinner fa-spin fa-3x fa-fw ajaxLoader"
           ></i>
         </li>
       </ul>

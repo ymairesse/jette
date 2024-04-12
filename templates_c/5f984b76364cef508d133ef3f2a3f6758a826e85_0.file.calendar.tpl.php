@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-08 20:00:45
+/* Smarty version 4.3.1, created on 2024-04-10 08:46:45
   from '/home/yves/www/newOxfam/templates/gestion/inc/calendar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_661430cda31c58_37162389',
+  'unifunc' => 'content_661635d5e1da71_29345740',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5f984b76364cef508d133ef3f2a3f6758a826e85' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/gestion/inc/calendar.tpl',
-      1 => 1712599236,
+      1 => 1712731584,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_661430cda31c58_37162389 (Smarty_Internal_Template $_smarty_tpl) {
+function content_661635d5e1da71_29345740 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h1 title="<?php echo $_smarty_tpl->tpl_vars['pseudo']->value;?>
@@ -47,7 +47,9 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vend
  <?php echo $_smarty_tpl->tpl_vars['year']->value;?>
 
   <span class="pull-right"
-    ><button
+    >
+    <div class="btn-group">
+    <button
       class="btn btn-primary btn-sm navigationAdmin"
       data-gap="-1"
       title="Mois précédent"
@@ -60,11 +62,12 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vend
     </button>
     <button
       type="button"
-      class="btn btn-secondary btn-sm"
-      id="btn-todayAdmin"
+      class="btn btn-success btn-sm"
+      id="btn-today"
       title="Ce mois-ci"
     >
-      Mois actuel
+      Mois actuel: <?php echo mb_strtoupper((string) smarty_modifier_date_format(time(),"%B") ?? '', 'UTF-8');?>
+
     </button>
     <button
       class="btn btn-primary btn-sm navigationAdmin"
@@ -77,6 +80,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vend
     >
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </button>
+  </div>
   </span>
 </h2>
 
@@ -283,7 +287,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   <ul class="list-unstyled">
     <li><span class="badge text-bg-warning">e1</span> : bénévole débutant·e; ne devrait pas être seul·e</li>
     <li><span class="badge text-bg-warning">e2</span> : bénévole expérimenté·e</li>
-    <li><span class="badge text-bg-warning">e3</span> : bénévole très expérimenté·e; aide en cas de difficulté</li>
+    <li><span class="badge text-bg-warning">e3</span> : bénévole très expérimenté·e; peut conseiller en cas de difficulté</li>
   </ul>
   
 </form>

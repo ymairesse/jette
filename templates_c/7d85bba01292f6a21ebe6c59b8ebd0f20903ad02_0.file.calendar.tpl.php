@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2024-04-09 14:11:14
+/* Smarty version 4.3.1, created on 2024-04-10 08:45:48
   from '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6615306271a0f4_53818535',
+  'unifunc' => 'content_6616359cd6a670_26031380',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d85bba01292f6a21ebe6c59b8ebd0f20903ad02' => 
     array (
       0 => '/home/yves/www/newOxfam/templates/inscriptions/calendar.tpl',
-      1 => 1712644130,
+      1 => 1712731546,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6615306271a0f4_53818535 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6616359cd6a670_26031380 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <h1>Calendrier des permanences</h1>
@@ -59,7 +59,9 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vend
   </span>
   <?php }?>
   <span class="pull-right"
-    ><button
+    >
+    <div class="btn-group">
+    <button
       class="btn btn-primary btn-sm navigation"
       data-gap="-1"
       title="Mois précédent"
@@ -72,11 +74,11 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vend
     </button>
     <button
       type="button"
-      class="btn btn-secondary btn-sm"
+      class="btn btn-success btn-sm"
       id="btn-today"
       title="Ce mois-ci"
     >
-      <?php echo mb_strtoupper((string) smarty_modifier_date_format(time(),"%B") ?? '', 'UTF-8');?>
+      Mois actuel: <?php echo mb_strtoupper((string) smarty_modifier_date_format(time(),"%B") ?? '', 'UTF-8');?>
 
     </button>
     <button
@@ -90,6 +92,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/home/yves/www/newOxfam/vend
     >
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </button>
+  </div>
   </span>
 </h2>
 

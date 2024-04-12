@@ -90,7 +90,7 @@ $(function () {
   });
 
   // choix du tri des utilisateurs
-  $("body").on("click", ".btn-sort", function (event) {
+  $("body").on("click", ".btn-sortGestion", function (event) {
     testSession();
     $(".btn-sort").removeClass("btn-primary");
     $(this).addClass("btn-primary");

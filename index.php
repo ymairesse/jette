@@ -19,7 +19,6 @@ if ($User != Null) {
 $action = isset($_GET['action']) ? $_GET['action'] : Null;
 
 if ($action == 'renewPasswd') {
-    Application::afficher($_GET);
     $pseudo = isset($_GET['pseudo']) ? $_GET['pseudo'] : Null;
     $token = isset($_GET['token']) ? $_GET['token'] : Null;
     $valid = $Application->checkValidPseudoToken($pseudo, $token);

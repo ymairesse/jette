@@ -33,7 +33,8 @@ if (filter_var($identifiant, FILTER_VALIDATE_EMAIL)) {
     $qui = User::getIdentiteUser($identifiant);
 }
 
-if ($qui != false) {
+// on a reconnu l'utilisateur par son pseudo ou son mot de passe
+if (($qui['pseudo'] == $identifiant) || ($qui['mail'] == $identifiant)) {
     try {
         //Server settings
         $mail->SMTPDebug = 0;
@@ -88,12 +89,11 @@ if ($qui != false) {
         $nb = 1;
 
     } catch (Exception $e) {
-        $nb = -1;
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        echo "Mailer Error: {$mail->ErrorInfo}";
     }
 
     $texte = sprintf('Nous venons d\'envoyer un mail à l\'adresse <a href="mailto:%s">%s</a>.<br>', $identite['mail'], $identite['mail']);
     $texte .= 'Il contient un lien qui vous permettra de changer votre mot de passe ';
     echo $texte;
 } else
-    die("L'utilisateur <strong>" . $identifiant . "</strong> n'existe pas dans notre base de données.");
+    echo "L'utilisateur <strong>" . $identifiant . "</strong> n'existe pas dans notre base de données.";

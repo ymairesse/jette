@@ -413,10 +413,10 @@ class Application
         $sql .= 'FROM ' . PFX . 'lostPasswd ';
         $sql .= 'WHERE pseudo = :pseudo AND token = :token AND date > DATE_SUB(NOW(), INTERVAL 48 HOUR) ';
         $requete = $connexion->prepare($sql);
-// echo $sql;
+
         $requete->bindParam(':pseudo', $pseudo, PDO::PARAM_STR, 7);
         $requete->bindParam(':token', $token, PDO::PARAM_STR, 40);
-// Application::afficher(array($pseudo, $token), true);
+
         $resultat = $requete->execute();
         if ($resultat) {
             $ligne = $requete->fetch();
@@ -427,7 +427,7 @@ class Application
         return ($ligne != Null);
     }
 
-    /**
+        /**
      * renvoie le nom du mois en français depuis le numéro du mois
      * 
      * @param int $month

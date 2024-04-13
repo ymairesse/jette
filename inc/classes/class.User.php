@@ -308,7 +308,7 @@ class User
     /**
      * renvoie la liste de tous les utilisateurs qui ont les droits $droits
      *
-     * @param array $droits (type array('root', 'oxfam')) ou array('client')
+     * @param array $sort (par nom ou par prénom)
      *
      * @return array
      */

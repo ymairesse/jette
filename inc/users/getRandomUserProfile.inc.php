@@ -12,7 +12,7 @@ include '../entetes.inc.php';
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : Null;
 
 
-$dataUser = $User->getDataUser($pseudo);
+$dataUser = $User::getDataUser($pseudo);
 
 $smarty->assign('dataUser', $dataUser);
 

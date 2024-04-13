@@ -21,14 +21,15 @@ $User = new User($identifiant, $md5passwd);
 $pseudo = $User->getPseudo();
 $user = $User->getIdentiteUser($pseudo);
 
-if ($user['approuve'] == 0)
-    die('unapproved');
-if ($user == false)
+if ($pseudo == Null) {
     die('ko');
+}
+elseif ($user['approuve'] == 0) {
+    die('unapproved');
+}
+else {
+    $_SESSION[APPLICATION] = serialize($User);
 
-$_SESSION[APPLICATION] = serialize($User);
-
-$smarty->assign('user', $user);
-$smarty->display('navbar.tpl');
-
-
+    $smarty->assign('user', $user);
+    $smarty->display('navbar.tpl');
+}

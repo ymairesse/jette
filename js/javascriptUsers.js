@@ -92,7 +92,7 @@ $(function () {
   // choix du tri des utilisateurs
   $("body").on("click", ".btn-sortGestion", function (event) {
     testSession();
-    $(".btn-sort").removeClass("btn-primary");
+    $(".btn-sortGestion").removeClass("btn-primary");
     $(this).addClass("btn-primary");
     var sortUsers = $(this).hasClass("parNom") ? "parNom" : "parPrenom";
     Cookies.set("sortUsers", sortUsers, { sameSite: "strict" });
@@ -102,9 +102,10 @@ $(function () {
       "inc/users/refreshListeUsers.inc.php",
       {
         pseudo: pseudo,
+        sortUsers: sortUsers,
       },
       function (resultat) {
-        $("#selectUsers").html(resultat);
+        $("#selectUsers4users").html(resultat);
       }
     );
   });

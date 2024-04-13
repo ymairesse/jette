@@ -42,9 +42,7 @@
           </div>
           <div>
             <span class="badge text-bg-warning">e{$user.experience}</span>
-
-            
-</div>
+          </div>
         </div>
       </td>
       <td>{$pseudoOneUser}</td>

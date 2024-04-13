@@ -29,7 +29,7 @@
     </button>
     <button
       type="button"
-      class="btn btn-success btn-sm"
+      class="btn btn-blue btn-sm"
       id="btn-today"
       title="Ce mois-ci"
     >

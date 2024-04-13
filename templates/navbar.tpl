@@ -135,6 +135,7 @@
 
         {if !(isset($user))}
         <li class="nav-item">
+          <div class="btn-group">
           <a
             type="button"
             class="btn btn-warning btn-sm"
@@ -144,10 +145,17 @@
           >
             Créer un compte</a
           >
-        </li>
-        {/if}
-        <li class="nav-item">
-          {if isset($user)}
+          <a
+            type="button"
+            class="btn btn-success btn-sm"
+            href="#"
+            id="btn-login"
+            title="Connexion"
+          >
+            <i class="fa fa-user"></i> Connexion</a
+          >
+          </div>
+          {else}
           <a
             role="button"
             class="btn btn-danger btn-sm"
@@ -161,18 +169,9 @@
               {$user.civilite} {$user.nom} {$user.prenom}</span
             >
           </a>
-          {else}
-          <a
-            type="button"
-            class="btn btn-success btn-sm"
-            href="#"
-            id="btn-login"
-            title="Connexion"
-          >
-            <i class="fa fa-user"></i> Connexion</a
-          >
-          {/if}
         </li>
+        {/if}
+        
       </ul>
     </div>
   </div>

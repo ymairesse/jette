@@ -7,8 +7,7 @@
   </u>
 </h2>
 
-<form autocomplete="false" id="fakeEditUser">
-  <div class="container-fluid">
+<form autocomplete="false" id="fakeEditUser" class="mb-3">
 
     <div class="row">
 
@@ -242,7 +241,7 @@
       </div>
     
     </div>
-    <button type="button" class="w-100 btn btn-warning" id="btn-editUserProfile"><i class="fa fa-edit"></i> Modifier cette fiche</button>
-  </div>
+  
 </form>
 
+<button type="button" class="w-100 btn btn-warning" id="btn-editUserProfile"><i class="fa fa-edit"></i> Modifier cette fiche</button>

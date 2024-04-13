@@ -81,6 +81,10 @@
         </form>
       </div>
       <div class="modal-footer">
+        <i
+        style="display: none"
+        class="fa fa-spinner fa-spin fa-fw ajaxLoader"
+      ></i>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Annuler
         </button>

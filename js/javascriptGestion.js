@@ -355,6 +355,7 @@ $(function () {
         bootbox.alert({
           title: "Enregistrement",
           message: nb + " enregistrement(s) effectué(s)",
+          backdrop: false,
         });
       }
     );

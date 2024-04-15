@@ -166,7 +166,14 @@
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             <span id="loggedUser">
               <span id="never"></span>
-              {$user.civilite} {$user.nom} {$user.prenom}</span
+              {if $user.civilite == 'M'} 
+              M. 
+              {elseif $user.civilite == 'F'} 
+              Mme 
+              {else} 
+              &nbsp;
+              {/if}
+              {$user.nom} {$user.prenom}</span
             >
           </a>
         </li>

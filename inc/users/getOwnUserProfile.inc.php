@@ -12,7 +12,6 @@ include '../entetes.inc.php';
 // utilisateur actif en session
 $pseudo = $User->getPseudo();
 $dataUser = $User->getIdentiteUser($pseudo);
-
 $smarty->assign('dataUser', $dataUser);
 $smarty->assign('self', $dataUser);
 

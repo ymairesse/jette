@@ -144,17 +144,6 @@ class User
         if ($resultat) {
             $requete->setFetchMode(PDO::FETCH_ASSOC);
             $ligne = $requete->fetch();
-            switch ($ligne['civilite']) {
-                case 'M':
-                    $ligne['civilite'] = 'M. ';
-                    break;
-                case 'F':
-                    $ligne['civilite'] = 'Mme ';
-                    break;
-                default:
-                    $ligne['civilite'] = 'Mme/M. ';
-                    break;
-            }
         }
 
         Application::DeconnexionPDO($connexion);

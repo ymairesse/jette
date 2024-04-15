@@ -397,6 +397,7 @@ class User
         // ni le statut "approuvé"
         if (!$partiel)
             $sql .= ', droits = :droits, approuve = :approuve ';
+        // si la rubrique "mot de passe" a été complétée, enregistrer le nouveau mdp
         if ($md5pwd != null) {
             $sql .= ', md5pwd = :md5pwd ';
         }
@@ -413,18 +414,16 @@ class User
         $requete->bindParam(':commune', $commune, PDO::PARAM_STR, 50);
         $requete->bindParam(':cpost', $cpost, PDO::PARAM_STR, 6);
         $requete->bindParam(':experience', $experience, PDO::PARAM_INT);
-
+        // si enregistrement partiel (auto-enregistrement), ne pas modifier les droits
+        // ni le statut "approuvé"
         if (!$partiel) {
             $requete->bindParam(':approuve', $approuve, PDO::PARAM_INT);
             $requete->bindParam(':droits', $droits, PDO::PARAM_STR, 6);
         }
-
+        // si la rubrique "mot de passe" a été complétée, enregistrer le nouveau mdp
         if ($md5pwd != null) {
             $requete->bindParam(':md5pwd', $md5pwd, PDO::PARAM_STR, 32);
         }
-
-        // echo($sql);
-        // Application::afficher(array($civilite, $nom, $prenom, $telephone, $mail, $pseudo, $adresse, $commune, $cpost, $droits, $md5pwd), true);
 
         $resultat = $requete->execute();
 
@@ -435,6 +434,13 @@ class User
         return $nb;
     }
 
+    /**
+     * Enregistre le profil d'un nouvel utilisateur présenté dans $form
+     *
+     * @param array $form
+     *
+     * @return int
+     */
     public static function saveNewUser($form)
     {
         $civilite = $form['civilite'] != '' ? $form['civilite'] : null;

@@ -36,9 +36,13 @@ $nbAdded = count($added);
 $deleted = array_diff($oldInscriptions, $newInscriptions);
 $nbDeleted = count($deleted);
 
+$freezeStatus = $Planning->getFreezeStatus4mois($year, $month);
 
-$message = sprintf('<div class="text-center">Vous allez supprimer <strong>%d</strong> période(s) <br>et ajouter <strong>%d</strong> période(s) de permanence', $nbDeleted, $nbAdded);
-$message .= '<br>VEUILLEZ CONFIRMER</div>';
+
+$message = sprintf('<div class="text-center"><p>Vous allez supprimer <strong>%d</strong> période(s) <br>et ajouter <strong>%d</strong> période(s) de permanence</p>', $nbDeleted, $nbAdded);
+if (($nbAdded > 0) && ($freezeStatus == 1))
+    $message .= '<p><strong>Attention, vous ne pourrez pas vous désinscrire.</strong></p>';
+$message .= '<p>VEUILLEZ CONFIRMER</p></div>';
 
 echo $message;
 

@@ -1,10 +1,3 @@
-<link
-  rel="stylesheet"
-  href="fa/css/font-awesome.min.css"
-  type="text/css"
-  media="screen, print"
-/>
-
 <style type="text/css">
   table {
     border-collapse: collapse;
@@ -69,8 +62,8 @@
   <table>
     {foreach from=$monthGrid key=jourDuMois item=dataJournee}
     <tr>
-      <td style="width: {$colWidth}px">
-        {$dataJournee.nomDuJour} {$dataJournee.date|date_format:"%d"}
+      <td style="width: {$colWidth}px; text-align:center; font-weight: bold;">
+        {$dataJournee.nomDuJour}<br>{$dataJournee.date|date_format:"%d/%m"}
       </td>
 
       {foreach from=$dataJournee.periodes key=noPeriode item=dataPeriode}
@@ -80,12 +73,11 @@
       >
         <div>{$dataPeriode.heureDebut}</div>
         <div class="listeBenevoles">
-          {if isset($dataPeriode.benevoles)} {foreach
-          from=$dataPeriode.benevoles key=unPseudo item=dataBenevole}
-
+          {if isset($dataPeriode.benevoles)} 
+          {foreach from=$dataPeriode.benevoles key=unPseudo item=dataBenevole}
           <div style="padding: 3px">
             <strong>
-              {if $dataBenevole.confirme == 1}<i class="fa fa-check"></i> {/if}
+              {if $dataBenevole.confirme == 1}<img src='images/check-mark.png'> {/if}
               {$dataBenevole.prenom} {$dataBenevole.nom|substr:0:1}.
             </strong>
           </div>
@@ -98,6 +90,7 @@
 
     {/foreach}
   </table>
+  <p>Les permanences marquées d'un <img src="images/check-mark.png"> sont confirmées.</p>
 
   <page_footer> Imprimé le {$smarty.now|date_format:'%d/%m/%Y'} </page_footer>
 </page>

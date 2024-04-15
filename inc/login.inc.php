@@ -23,11 +23,9 @@ $user = $User->getIdentiteUser($pseudo);
 
 if ($pseudo == Null) {
     die('ko');
-}
-elseif ($user['approuve'] == 0) {
+} elseif ($user['approuve'] == 0) {
     die('unapproved');
-}
-else {
+} else {
     $_SESSION[APPLICATION] = serialize($User);
 
     $smarty->assign('user', $user);

@@ -87,6 +87,8 @@ $smarty->assign('inscriptions', $inscriptions);
 // ----------------------------------------------------------
 $planningPDF = $smarty->fetch('planningPDF.tpl');
 
+// Application::afficher($planningPDF, true);
+
 require INSTALL_DIR.'/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;

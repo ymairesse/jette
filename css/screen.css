@@ -127,7 +127,7 @@ td.conge {
 }
 
 td.modified {
-    background: #0f0;
+    background: #0f0 !important;
 }
 
 .me {

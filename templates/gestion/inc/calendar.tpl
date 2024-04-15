@@ -15,6 +15,17 @@
 
 <h2 class="text-center">
   {$monthName} {$year}
+  
+  {if $freezeStatus == 1} 
+    {assign var=texteFreeze value="Les désinscriptions ne sont plus possibles"}
+    {elseif $freezeStatus == 2} 
+    {assign var=texteFreeze value="Ni inscription, ni désinscription"}
+    {else}
+    {assign var=texteFreeze value=""} 
+  {/if}
+  
+  <i class="fa fa-exclamation-triangle" aria-hidden="true" title="{$texteFreeze}"></i>
+
   <span class="pull-right"
     >
     <div class="btn-group">

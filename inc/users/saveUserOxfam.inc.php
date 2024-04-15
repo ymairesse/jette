@@ -20,7 +20,7 @@ $pseudoOxfam = $form['pseudo'];
 $self = $User->getUser();
 $pseudo = $self['pseudo'];
 
-// enregistrement sans modification des droits et de l'activation
+// enregistrement sans modification des droits ni de l'activation
 // si l'enregistrement concerne l'utilisateur actif
 $partiel = ($pseudo == $pseudoOxfam);
 

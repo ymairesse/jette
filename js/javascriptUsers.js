@@ -254,5 +254,39 @@ $(function () {
     });
   });
 
+  // --------------------------------------------------------------
+  // gestion des mails
+  // --------------------------------------------------------------
+  $('body').on('click', '#btn-mail', function(event){
+    testSession(event);
+
+    $.post('inc/users/getModalMail.inc.php', {}, 
+        function(resultat){
+            $('#modal').html(resultat);
+            $('#modalMail').modal('show');
+    })
+})
+
+$('body').on('click', '#btn-copyCb', function(event){
+  testSession(event);
+
+  var allAdresses = '';
+  var nb = 0;
+  $(".cbMail").each(function () {
+      if ($(this).prop("checked") == true) {
+      allAdresses += $(this).data('nomprenom')+ ' <' + $(this).val() + '>, \n';
+      nb++;
+      }
+  });
+  $('#listeMails').text(allAdresses);
+  $('#listeMails').select();
+  document.execCommand("copy");
+      
+  bootbox.alert({
+      title: nb + ' adresse(s) <strong>Copiée(s)</strong>',
+      message: 'Vous pouvez maintenant les <strong>Coller</strong> dans votre mail',
+      backdrop: false,
+  })
+})
   
 });

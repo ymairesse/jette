@@ -49,7 +49,9 @@
             </li>
           </ul>
         </li>
+        {/if}
 
+        {if ($user.droits == 'admin')}
         <li class="nav-item dropdown">
           <a
             href="#"
@@ -92,13 +94,18 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Préférences
+            Boîte à outils
           </a>
           <ul class="dropdown-menu">
             <li>
               <a class="dropdown-item" id="editProfilPerso" href="#"
                 ><i class="fa fa-user"></i> Profil personnel</a
               >
+            </li>
+            <li>
+              <a href="#" class="dropdown-item" id="btn-mail">
+                <i class="fa fa-envelope" aria-hidden="true"></i> Envoi de mails
+              </a>
             </li>
 
             {if isset($user) && ($user.droits == 'admin')}

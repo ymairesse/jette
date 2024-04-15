@@ -31,8 +31,10 @@
     {else}
     {assign var=texteFreeze value=""} 
   {/if}
-  
+
+  {if $freezeStatus > 0}
   <i class="fa fa-exclamation-triangle" aria-hidden="true" title="{$texteFreeze}"></i>
+  {/if}
   
   <span class="pull-right"
     >

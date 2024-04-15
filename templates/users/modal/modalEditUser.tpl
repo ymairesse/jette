@@ -1,4 +1,3 @@
-{debug}
 <!-- modal -->
 <div
   class="modal fade"

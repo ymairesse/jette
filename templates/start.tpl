@@ -13,7 +13,7 @@
 
         <h2>Nous Visiter</h2>
         <p>
-          Rue Lépoold 1er, 527<br />
+          Rue Lépold 1er, 527<br />
           1090 Jette
         </p>
         <h2>Nous contacter</h2>

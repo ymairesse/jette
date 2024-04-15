@@ -304,7 +304,8 @@ class User
     public function getListeUsers($sort)
     {
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
-        $sql = 'SELECT pseudo, civilite, nom, prenom, droits, approuve, experience ';
+        $sql = 'SELECT pseudo, civilite, nom, prenom, droits, mail, telephone, adresse, ';
+        $sql .= 'cpost, commune, homonyme, md5pwd, approuve, experience ';
         $sql .= 'FROM ' . PFX . 'users ';
         $sql .= 'WHERE droits != "nobody" ';
 

@@ -101,24 +101,50 @@ $(function () {
   $("body").on("click", "#btn-modalSaveNewContexte", function (event) {
     testSession(event);
     if ($("#formNewContexte").valid()) {
-      var date = $("#formNewContexte input#dateDebutContexte").val();
       var formulaire = $("#formNewContexte").serialize();
+      $.post(
+        "inc/planning/saveNewContexte.inc.php",
+        {
+          formulaire: formulaire,
+        },
+        function (idContexte) {
+          if (idContexte > 0) {
+            $("#modalNewContexte").modal("hide");
+            bootbox.alert({
+              title: "Enregistrement",
+              message: "Nouveau contexte créée",
+              backdrop: false,
+              callback: function () {
+                // sélection du nouveau "contexte"
+                Cookies.set("idContexte", idContexte, { sameSite: "strict" });
+                // rafraîchissement de l'écran
+                $("#gestPeriodes").trigger("click");
+              },
+            });
+          }
+        }
+      );
+    }
+  });
+
+  // -----------------------------------------------------------
+  // Enegistre une nouvelle date pivôt pour un contexte existant
+  // -----------------------------------------------------------
+  $("body").on("click", "#modalSaveDateContexte", function (event) {
+    testSession(event);
+    if ($("#formEditDateContexte").valid()) {
+      var formulaire = $("#formEditDateContexte").serialize();
       $.post(
         "inc/planning/saveDateContexte.inc.php",
         {
           formulaire: formulaire,
         },
-        function (idContexte) {
-          if (idContexte > 0) $("#modalNewContexte").modal("hide");
-          bootbox.alert({
+        function (resultat) {
+          $("#modalEditDate4Contexte").modal("hide");
+          $("#gestPeriodes").trigger("click");
+          boobox.alert({
             title: "Enregistrement",
-            message: "Nouveau contexte créée",
-            callback: function () {
-              // sélection du nouveau "contexte"
-              Cookies.set("idContexte", idContexte, { sameSite: "strict" });
-              // rafraîchissement de l'écran
-              $("#gestPeriodes").trigger("click");
-            },
+            message: resultat + " modification enregistrée",
           });
         }
       );
@@ -294,7 +320,6 @@ $(function () {
   // Modification de la date pivôt d'un contexte, dans l'intervalle
   // entre les deux dates suivante et précédente
   // -----------------------------------------------------------
-
   $("body").on("click", ".btn-editContexte", function () {
     var tr = $(this).closest("tr");
     var idContexte = tr.data("idcontexte");
@@ -311,30 +336,9 @@ $(function () {
       },
       function (resultat) {
         $("#modal").html(resultat);
-        $("#modalNewDate4Contexte").modal("show");
+        $("#modalEditDate4Contexte").modal("show");
       }
     );
-  });
-
-  // -----------------------------------------------------------
-  // Enegistre une nouvelle date pivôt pour un nouveau contexte
-  // -----------------------------------------------------------
-
-  $("body").on("click", "#modalSaveDateContexte", function (event) {
-    testSession(event);
-    if ($("#formEditDateContexte").valid()) {
-      var formulaire = $("#formEditDateContexte").serialize();
-      $.post(
-        "inc/planning/saveNewDate4Contexte.inc.php",
-        {
-          formulaire: formulaire,
-        },
-        function (resultat) {
-          $("#modalNewDate4Contexte").modal("hide");
-          $("#gestPeriodes").trigger("click");
-        }
-      );
-    }
   });
 
   // -----------------------------------------------------------
@@ -348,6 +352,9 @@ $(function () {
     });
   });
 
+  // -----------------------------------------------------------
+  // suppresssion effective après confirmation des périodes échues
+  // -----------------------------------------------------------
   $("body").on("click", "#btn-modalClean", function (event) {
     testSession(event);
     var formulaire = $("#formClean").serialize();
@@ -358,7 +365,7 @@ $(function () {
       },
       function (resultat) {
         $("#modalCleaning").modal("hide");
-        $('#gestCalendrier').trigger('click');  
+        $("#gestCalendrier").trigger("click");
         bootbox.alert({
           title: "Suppression du calendrier planning",
           message: "<strong>" + resultat + "</strong> permanences supprimées",

@@ -1,15 +1,15 @@
 <!-- Modal -->
 <div
   class="modal fade"
-  id="modalNewDate4Contexte"
+  id="modalEditDate4Contexte"
   tabindex="-1"
-  aria-labelledby="modalNewDate4ContexteLabel"
+  aria-labelledby="modalEditDate4ContexteLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalNewDate4ContexteLabel">
+        <h1 class="modal-title fs-5" id="modalEditDate4ContexteLabel">
           Nouvelle date pivot
         </h1>
         <button

@@ -90,6 +90,7 @@ class Planning
         // Parcourir les clés jusqu'à l'avant-dernière clé
         // on n'a pas besoin de la dernière car cette période est ouverte
         $count = count($keys);
+        // boucler jusqu'à l'avant-dernière date
         for ($i = 0; $i < $count - 1; $i++) {
             // Obtenir la clé actuelle et la clé suivante
             $cleActuelle = $keys[$i];
@@ -97,23 +98,15 @@ class Planning
 
             // Obtenir les dates correspondantes et formater chacune d'elles
             $dateActuelle = $listeContextes[$cleActuelle];
-            // $date = explode('-', $dateActuelle);
-            // $dateActuelle = sprintf('%s/%s/%s', $date[2], $date[1], $date[0]);
-
+            
             $dateSuivante = $listeContextes[$cleSuivante];
-            // $date = explode('-', $dateSuivante);
-            // $dateSuivante = sprintf('%s/%s/%s', $date[2], $date[1], $date[0]);
-
+            
             // Ajouter les dates à $listeDouble avec la clé d'origine
             $listeDouble[$cleActuelle] = array($dateActuelle, $dateSuivante);
         }
 
         // récupérer la date de début du contexte final
         $dateFinale = $listeContextes[end($keys)];
-
-        // // formater la date finale
-        // $date = explode('-', $dateFinale);
-        // $dateFinale = sprintf('%s/%s/%s', $date[2], $date[1], $date[0]);
         // Ajouter la dernière date avec une marque représentant la fin
         $listeDouble[end($keys)] = array($dateFinale, '...');
 
@@ -182,7 +175,6 @@ class Planning
             $limiteInf = $ligne['limiteInf'];
         }
 
-
         $sql = 'SELECT MIN(dateDebutContexte) AS limiteSup ';
         $sql .= 'FROM '.PFX.'contextes ';
         $sql .= 'WHERE dateDebutContexte > :dateFinMois ';
@@ -195,8 +187,6 @@ class Planning
             $ligne = $requete->fetch();
             $limiteSup = $ligne['limiteSup'];
         }
-        // echo "limiteSup ".$limiteSup;
-        // die('limiteInf '.$limiteInf);
 
         $sql = 'SELECT idContexte FROM '.PFX.'contextes ';
         $sql .= 'WHERE ';
@@ -352,7 +342,8 @@ class Planning
     }
 
     /**
-     * créer $nbPermanences avec des numéros commençant à $numeroPermanence + 1 pour la $idContexte
+     * créer $nbPermanences avec des numéros commençant à $numeroPermanence + 1 pour
+     * le contexte $idContexte
      * 
      * @param int $idContexte
      * @param int $nbPermanences nombre de permanences à créer
@@ -439,7 +430,7 @@ class Planning
      * 
      * @return int
      */
-    public function saveDateContexte($dateDebutContexte)
+    public function saveNewContexte($dateDebutContexte)
     {
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
         $sql = 'INSERT INTO ' . PFX . 'contextes ';
@@ -452,15 +443,11 @@ class Planning
 
         $nb = 0;
 
-        $id = $connexion->lastInsertId();
-
-        if ($resultat) {
-            $nb = $requete->rowCount();
-        }
+        $idContexte = $connexion->lastInsertId();
 
         Application::DeconnexionPDO($connexion);
 
-        return $id;
+        return $idContexte;
     }
 
     /**
@@ -471,7 +458,7 @@ class Planning
      * 
      * @return int
      */
-    public function saveNewDate4Contexte($idContexte, $dateDebutContexte){
+    public function saveDateContexte($idContexte, $dateDebutContexte){
         $connexion = Application::connectPDO(SERVEUR, BASE, NOM, MDP);
         $sql = 'UPDATE '.PFX.'contextes ';
         $sql .= 'SET dateDebutContexte = :dateDebutContexte ';

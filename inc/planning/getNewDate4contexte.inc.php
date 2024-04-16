@@ -17,4 +17,4 @@ $smarty->assign('dateActuelle', $dateActuelle);
 $smarty->assign('datePrecedente', $datePrecedente);
 $smarty->assign('dateSuivante', $dateSuivante);
 
-$smarty->display('planning/modal/modalNewDate4contexte.tpl');
+$smarty->display('planning/modal/modalEditDate4contexte.tpl');

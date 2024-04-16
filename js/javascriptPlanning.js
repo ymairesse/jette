@@ -142,7 +142,7 @@ $(function () {
         function (resultat) {
           $("#modalEditDate4Contexte").modal("hide");
           $("#gestPeriodes").trigger("click");
-          boobox.alert({
+          bootbox.alert({
             title: "Enregistrement",
             message: resultat + " modification enregistrée",
           });

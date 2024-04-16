@@ -29,7 +29,6 @@
     <tr>
       <th style="width: 1em">&nbsp;</th>
       <th>Nom</th>
-      <th>Pseudo</th>
     </tr>
     <!-- L'utlisateur actif ne peut modifier son propre profil -->
     {foreach from=$listeUsers key=pseudoOneUser item=user}
@@ -52,7 +51,6 @@
           </div>
         </div>
       </td>
-      <td>{$pseudoOneUser}</td>
     </tr>
 
     {/foreach}

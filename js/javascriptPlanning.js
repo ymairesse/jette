@@ -114,13 +114,10 @@ $(function () {
               title: "Enregistrement",
               message: "Nouveau contexte créée",
               backdrop: false,
-              callback: function () {
-                // sélection du nouveau "contexte"
-                Cookies.set("idContexte", idContexte, { sameSite: "strict" });
-                // rafraîchissement de l'écran
-                $("#gestPeriodes").trigger("click");
-              },
             });
+            // sélection du nouveau "contexte"
+            Cookies.set("idContexte", idContexte, { sameSite: "strict" });
+            $("#gestPeriodes").trigger("click");
           }
         }
       );
